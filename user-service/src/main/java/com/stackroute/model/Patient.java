@@ -20,13 +20,20 @@ public class Patient
     @Email
     @NotNull
     private String patientEmail;
-    private Binary patientImage;
-    private String patientName;
     @NotNull
     private String patientPassword;
-    private Long patientMobile;
-    private Gender gender;
-    private String patientCity;
     private UserRole userRole;
+
+    private String patientImage;
+    private String firstName;
+    private String lastName;
+    private String age;
+    private Long contactNum;
+    private BloodGroup bloodGroup;
+    private Gender gender;
+    private String weight;
+    private String height;
+
+
 
 }

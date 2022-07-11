@@ -8,10 +8,10 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
-public class DoctorProfileDto
+public class UserDto
 {
-    private String doctorEmail;
-    private String doctorPassword;
+    private String emailId;
+    private String password;
     private UserRole userRole;
 
 }
