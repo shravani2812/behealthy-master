@@ -81,7 +81,6 @@ public class UserController
     }
 
 
-
     //method to create a Patient record in db
 
     @PostMapping("/patient")

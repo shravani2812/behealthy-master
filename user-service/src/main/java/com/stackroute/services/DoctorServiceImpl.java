@@ -15,6 +15,10 @@ public class DoctorServiceImpl implements DoctorService
 
     @Autowired
     private DoctorRepository doctorRepository;
+    @Autowired
+    public DoctorServiceImpl(DoctorRepository doctorRepository){
+        this.doctorRepository=doctorRepository;
+    }
 
 
     @Override
