@@ -67,7 +67,7 @@ public class DoctorRepoTest
     {
         Doctor doctor = new Doctor("d1@gmail.com","2344",UserRole.DOCTOR,"Img","doctor",
                 "one","No14 3r main Vijayanagar","33",Gender.FEMALE,9845088564L,"MBBS",
-                "1111122","Oncology","2011","4","Bengaluru", "Forties");
+                "777777","Oncology","2011","4","Bengaluru", "Forties");
 
         Doctor doctor1 = doctorRepository.save(doctor);
         Optional<Doctor> doctor2 = doctorRepository.findById(doctor1.getDoctorEmail());
