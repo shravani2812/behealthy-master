@@ -1,4 +1,4 @@
-package com.stackroute.utility;
+package com.stackroute.rabbitMq;
 
 import com.stackroute.model.UserRole;
 import lombok.*;

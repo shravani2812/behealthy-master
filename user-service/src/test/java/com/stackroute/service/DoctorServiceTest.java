@@ -59,5 +59,14 @@ public class DoctorServiceTest
         assertEquals(doctor, updatedDoctor);
     }
 
+    @Test
+    public void givenEmailShouldReturnRespectiveUser()
+    {
+        when(doctorRepository.findById(doctor.getDoctorEmail())).thenReturn(optional);
+        Optional<Doctor> optional1 = doctorServiceImpl.findById(doctor.getDoctorEmail());
+
+    }
+
+
 
 }
