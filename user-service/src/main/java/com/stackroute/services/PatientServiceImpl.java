@@ -2,7 +2,7 @@ package com.stackroute.services;
 
 import com.stackroute.model.Patient;
 import com.stackroute.repositories.PatientRepository;
-import com.stackroute.utility.UserDto;
+import com.stackroute.rabbitMq.UserDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
