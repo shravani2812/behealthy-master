@@ -1,5 +1,6 @@
 package com.stackroute.dto;
 
+import com.stackroute.model.UserRole;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -17,6 +18,6 @@ public class UserDto {
     @Id
     private String emailId;
     private String password;
-    private String userRole;
+    private UserRole userRole;
 
 }

@@ -21,6 +21,7 @@ public class Consumer {
         User user = new User();
         user.setEmailId(userDto.getEmailId());
         user.setPassword(userDto.getPassword());
+        user.setUserRole(userDto.getUserRole());
         userService.saveUser(user);
     }
 
