@@ -1,8 +1,15 @@
 package com.stackroute.model;
 
-import lombok.Data;
+import lombok.*;
+
+
 
 @Data
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@ToString
 
 public class Email {
 
@@ -14,6 +21,6 @@ public class Email {
 
     private String message;
 
-    private String attachment;
+   // private String attachment;
 
 }
