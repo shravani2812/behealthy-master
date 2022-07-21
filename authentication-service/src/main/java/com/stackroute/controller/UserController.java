@@ -31,7 +31,7 @@ public class UserController {
 
     }
     //This is login for mapping for user using which user can login using the credentials
-    @PostMapping("/login")
+    @PostMapping("/auth/login")
     public ResponseEntity loginUser(@RequestBody User user) throws UserNotFoundException {
         Map<String, String> map = null;
         try {
@@ -53,7 +53,7 @@ public class UserController {
         return responseEntity;
     }
     //First step is to register the user
-    @PostMapping("/register")
+    @PostMapping("/auth/register")
     public ResponseEntity<User>  saveUser(@RequestBody User user) {
 
         return new ResponseEntity<>(userService.saveUser(user), HttpStatus.CREATED);

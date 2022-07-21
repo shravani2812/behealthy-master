@@ -55,7 +55,7 @@ public class UserController
     }
 
     //method to update doctor details by the emailId
-    @PutMapping("/update/doctorEmail/{doctorEmail}")
+    @PutMapping("/doctor/update/doctorEmail/{doctorEmail}")
     public ResponseEntity<Doctor> updateDoctorByEmail(@RequestBody Doctor doctor, @PathVariable ("doctorEmail") String doctorEmail)
             throws ResourceNotFoundException
     {
