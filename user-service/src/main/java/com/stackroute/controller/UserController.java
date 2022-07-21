@@ -22,7 +22,7 @@ public class UserController
 
     @Autowired
     private PatientService patientService;
-    
+
     @Autowired
     public  UserController(DoctorService doctorService, PatientService patientService)
     {

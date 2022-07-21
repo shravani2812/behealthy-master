@@ -1,6 +1,7 @@
 package com.stackroute.services;
 
 import com.stackroute.model.Doctor;
+import com.stackroute.config.Producer;
 import com.stackroute.repositories.DoctorRepository;
 import com.stackroute.rabbitMq.UserDto;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,21 +16,27 @@ public class DoctorServiceImpl implements DoctorService
 
     @Autowired
     private DoctorRepository doctorRepository;
-    @Autowired
-    public DoctorServiceImpl(DoctorRepository doctorRepository){
-        this.doctorRepository=doctorRepository;
-    }
 
+    @Autowired
+    private Producer publisher;
+
+    @Autowired
+    public DoctorServiceImpl(DoctorRepository doctorRepository, Producer publisher){
+        this.doctorRepository=doctorRepository;
+        this.publisher=publisher;
+    }
 
     @Override
     public Doctor createDoctorProfile(Doctor doctor)
     {
-        UserDto dto = new UserDto();
-        dto.setEmailId(doctor.getDoctorEmail());
-        dto.setPassword(doctor.getDoctorPassword());
-        dto.setUserRole(doctor.getUserRole());
+        UserDto userDto = new UserDto();
+        userDto.setEmailId(doctor.getDoctorEmail());
+        userDto.setPassword(doctor.getDoctorPassword());
+        userDto.setUserRole(doctor.getUserRole());
 
+        publisher.sendMessageToConsumer(userDto);
         return doctorRepository.save(doctor);
+
     }
 
     @Override
