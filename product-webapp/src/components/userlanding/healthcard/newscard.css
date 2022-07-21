@@ -1,4 +1,4 @@
-.cards {
+.health-cards {
 
 
     background-color: #fff;
@@ -9,7 +9,7 @@
     overflow: hidden;
     
   }
-    img {
+    .healthImg{
       border-radius: 0.5rem 0.5rem 0 0;
       width: 100%;
       object-fit: cover;
@@ -30,16 +30,16 @@
   
   
   
-  .cards h3 {
+  .health-cards h3 {
     margin-top: 1rem;
     font-size: 1.25rem;
   }
   
-  .cards a {
+  .health-cards a {
     color: inherit;
   }
   
-  .cards-wrapper {
+  .health-cards-wrapper {
     list-style: none;
     padding: 0;
     margin: 0;

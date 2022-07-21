@@ -63,7 +63,7 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
     padding: 7rem 0px;
   }
   
-  .btn {
+  .btns {
     display: inline-block;
     font-size: 14px;
     font-size: 0.8125rem;
@@ -75,94 +75,95 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
     border-radius: 5px;
     border: 2px solid transparent;
     transition: all 0.35s ease;
-  }
-  .btn.btn-icon i {
+    text-decoration: none;
+  } 
+  .btns.btns-icon i {
     border-left: 1px solid rgba(255, 255, 255, 0.09);
     padding-left: 15px;
   }
-  .btn:focus {
+  .btns:focus {
     outline: 0px;
     box-shadow: none;
   }
   
-  .btn-main {
+  .btns-mains {
     background: #223a66;
     color: #fff;
     border-color: #223a66;
   }
-  .btn-main:hover {
+  .btns-mains:hover {
     background: #e12454;
     border-color: #e12454;
     color: #fff;
   }
   
-  .btn-main-2 {
+  .btns-main-2 {
     background: #e12454;
     color: #fff;
     border-color: #e12454;
   }
-  .btn-main-2:hover {
+  .btns-main-2:hover {
     background: #223a66;
     color: #fff;
     border-color: #223a66;
   }
   
-  .btn-solid-border {
+  .btns-solid-border {
     border: 2px solid #223a66;
     background: transparent;
     color: #223a66;
   }
-  .btn-solid-border:hover {
+  .btns-solid-border:hover {
     border: 2px solid #223a66;
     color: #fff;
     background: #223a66;
   }
-  .btn-solid-border:hover.btn-icon i {
+  .btns-solid-border:hover.btns-icon i {
     border-left: 1px solid rgba(255, 255, 255, 0.09);
   }
-  .btn-solid-border.btn-icon i {
+  .btns-solid-border.btns-icon i {
     border-left: 1px solid rgba(0, 0, 0, 0.09);
   }
   
-  .btn-transparent {
+  .btns-transparent {
     background: transparent;
     color: #222;
     border-color: #6F8BA4;
   }
-  .btn-transparent:hover {
+  .btns-transparent:hover {
     background: #6F8BA4;
     color: #fff;
   }
   
-  .btn-white {
+  .btns-white {
     background: #fff;
     border-color: #fff;
     color: #222;
   }
-  .btn-white:hover {
+  .btns-white:hover {
     background: #223a66;
     color: #fff;
     border-color: #223a66;
   }
   
-  .btn-solid-white {
+  .btns-solid-white {
     border-color: #fff;
     color: #fff;
   }
-  .btn-solid-white:hover {
+  .btns-solid-white:hover {
     background: #fff;
     color: #222;
   }
   
-  .btn-round {
+  .btns-round {
     border-radius: 4px;
   }
   
-  .btn-round-full {
+  .btns-round-full {
     border-radius: 50px;
   }
   
-  .btn.active:focus, .btn:active:focus, .btn:focus {
+  .btns.active:focus, .btns:active:focus, .btns:focus {
     outline: 0;
   }
   

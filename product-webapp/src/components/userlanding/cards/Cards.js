@@ -1,5 +1,8 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "./Cards.css";
+
+
 function Cards(props) {
   return (
     <>
@@ -17,11 +20,11 @@ function Cards(props) {
               <p className="fs-5 issue">Child specialist and doctor for consult</p>
 
               <div className="social-media mt-2">
-                <button className="learn-more">
+                <button className="learn-more" id="buttons">
                   <span className="circle" aria-hidden="true">
                     <span className="icon arrow"></span>
                   </span>
-                  <span className="button-text">Consult Now</span>
+                  <Link to="/patient" className="button-text">Consult Now</Link>
                 </button>
               </div>
             </div>
@@ -44,7 +47,7 @@ function Cards(props) {
                   <span className="circle" aria-hidden="true">
                     <span className="icon arrow"></span>
                   </span>
-                  <span className="button-text">Consult Now</span>
+                   <Link to="/patient" className="button-text">Consult Now</Link>
                 </button>
               </div>
             </div>
@@ -60,14 +63,14 @@ function Cards(props) {
               </div>
               <h3 className="text-dark fs-3">Orthopedist</h3>
               <p className="fs-5 issue">
-                For Bones and Joints issue, spinal injuries.
+                For Bones and Joints issue, spinal injuries
               </p>
               <div className="social-media mt-2">
                 <button className="learn-more">
                   <span className="circle" aria-hidden="true">
                     <span className="icon arrow"></span>
                   </span>
-                  <span className="button-text">Consult Now</span>
+                  <Link to="/patient" className="button-text">Consult Now</Link>
                 </button>
               </div>
             </div>

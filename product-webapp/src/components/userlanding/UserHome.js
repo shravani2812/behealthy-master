@@ -5,13 +5,16 @@ import NewsCard from './healthcard/NewsCard';
 import Testimonals from './feedback/Testimonals';
 import FooterCard from './footer/FooterCard';
 
+import { Link } from 'react-router-dom';
+
+
 function UserHome(props) {
     return (
         <>
         <header>
         <nav className="navbar navbar-expand-lg shadow-lg" style={{background: "#332cf2"}}>
   <div className="container-fluid">
-    <a className="navbar-brand" href=" ">Logo</a>
+    <a className="navbar-brand text-light fw-bold" href=" ">BeHealthy </a>
     <button className="navbar-toggler bg-light" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span className="navbar-toggler-icon"></span>
     </button>
@@ -21,13 +24,14 @@ function UserHome(props) {
           <a className="nav-link active fs-5 mx-2 text-light" aria-current="page" href=" ">Home</a>
         </li>
         <li className="nav-item">
-          <a className="nav-link fs-5 mx-2 text-light" href=" ">About Us</a>
+          <Link className="nav-link fs-5 mx-2 text-light" to="/patient">Find doctors</Link>
         </li>
         <li className="nav-item">
           <a className="nav-link fs-5 mx-2 text-light" href=" ">Services</a>
         </li>
         <li className="nav-item mx-2">
-        <button className="button-83 text-dark">Login/Register</button>
+		{/* <Link to="/">Login here</Link> */}
+        <Link to='/register' className={{textDecoration:'none'}}><button className="button-83 text-dark" >Login/Register</button></Link>
         </li>
       </ul>
     </div>
@@ -44,7 +48,7 @@ function UserHome(props) {
 				<div className="block">
 					<div className="divider mb-3"></div>
 					<span className="text-uppercase text-sm letter-spacing ">Total Health care solution</span>
-					<h1 className="mb-3 mt-3">Your most trusted health partner</h1>
+					<h1 className="mb-3 mt-3 m">Your most trusted health partner</h1>
 					
 					<p className="mb-4 pr-5">A repudiandae ipsam labore ipsa voluptatum quidem quae laudantium quisquam aperiam maiores sunt fugit, deserunt rem suscipit placeat.</p>
 					<div className="btn-container ">
@@ -68,7 +72,7 @@ function UserHome(props) {
 						<span>24 Hours Service</span>
 						<h4 className="mb-3">Online Appoinment</h4>
 						<p className="mb-4">Get ALl time support for emergency.We have introduced the principle of family medicine.</p>
-						<a href="appoinment.html" className="btn btn-main btn-round-full">Make a appoinment</a>
+						<a href="appoinment.html" className="btns btns-mains btns-round-full">Make a appoinment</a>
 					</div>
 				
 					<div className="feature-item mb-5 mb-lg-0">
@@ -78,7 +82,7 @@ function UserHome(props) {
 						<span>Free Consulation</span>
 						<h4 className="mb-3">Video Consulting </h4>
 						<p className="mb-4">We are providing free consultation with Top doctor Specialist</p>
-						<a href="appoinment.html" className="btn btn-main btn-round-full">Know more</a>
+						<a href="appoinment.html" className="btns btns-mains btns-round-full">Know more</a>
 					</div>
 				
 					<div className="feature-item mb-5 mb-lg-0">

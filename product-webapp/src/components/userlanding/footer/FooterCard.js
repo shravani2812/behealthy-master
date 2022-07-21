@@ -1,5 +1,6 @@
 import React from "react";
 import "./footer.css";
+//import logo from '../Images/logo.png';
 function FooterCard(props) {
   return (
     <div>
@@ -7,7 +8,7 @@ function FooterCard(props) {
         <div className="container">
           <div className="footer-cta pt-5 pb-5">
             <div className="row">
-              <div className="col-xl-4 col-md-4 mb-30">
+              <div className="col-xl-4 col-md-4">
                 <div className="single-cta">
                   <i className="fas fa-map-marker-alt"></i>
                   <div className="cta-text">
@@ -16,7 +17,7 @@ function FooterCard(props) {
                   </div>
                 </div>
               </div>
-              <div className="col-xl-4 col-md-4 mb-30">
+              <div className="col-xl-4 col-md-4">
                 <div className="single-cta">
                   <i className="fas fa-phone"></i>
                   <div className="cta-text">
@@ -25,7 +26,7 @@ function FooterCard(props) {
                   </div>
                 </div>
               </div>
-              <div className="col-xl-4 col-md-4 mb-30">
+              <div className="col-xl-4 col-md-4">
                 <div className="single-cta">
                   <i className="far fa-envelope-open"></i>
                   <div className="cta-text">
@@ -38,11 +39,11 @@ function FooterCard(props) {
           </div>
           <div className="footer-content pt-5 pb-5">
             <div className="row">
-              <div className="col-xl-4 col-lg-4 mb-50">
+              <div className="col-xl-4 col-lg-4">
                 <div className="footer-widget">
                   <div className="footer-logo">
                     <a href="index.html">
-                      <img src=" " className="img-fluid" alt="logo" />
+                      <img src={''} className="img-fluid" alt="logo" />
                     </a>
                   </div>
                   <div className="footer-text">
