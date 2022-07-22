@@ -1,5 +1,6 @@
 import React from "react";
 import "./footer.css";
+import applogo from '../../common/logo.jpg';
 //import logo from '../Images/logo.png';
 function FooterCard(props) {
   return (
@@ -43,7 +44,7 @@ function FooterCard(props) {
                 <div className="footer-widget">
                   <div className="footer-logo">
                     <a href="index.html">
-                      <img src={''} className="img-fluid" alt="logo" />
+                      <img src={applogo} className="img-fluid" alt="logo" />
                     </a>
                   </div>
                   <div className="footer-text">
