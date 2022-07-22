@@ -4,10 +4,12 @@ import applogo from './logo.jpg'
 
 
 function Navbars(props) {
+
+
   return (
     <nav className="navbar navbar-expand-lg shadow-lg" style={{background: "#0A1CCC"}}>
     <div className="container-fluid">
-    <img src={applogo} alt="" />
+    <Link to="/"> <img src={applogo} alt="" /></Link>
       <button className="navbar-toggler bg-light" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span className="navbar-toggler-icon"></span>
       </button>
@@ -20,9 +22,8 @@ function Navbars(props) {
             <a className="nav-link fs-5 mx-2 text-light" >{props.subnav1}</a>
           </li>
           <li className="nav-item">
-            <a className="nav-link fs-5 mx-2 text-light" >{props.subnav2}</a>
+            <button className={`mt-1 ${props.display}`} id="logout">{props.subnav3}</button>
           </li>
-         
         </ul>
       </div>
     </div>

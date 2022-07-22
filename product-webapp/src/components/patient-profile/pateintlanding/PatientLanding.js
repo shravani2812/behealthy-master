@@ -17,7 +17,7 @@ import axios from "axios";
 import FooterCard from "../../userlanding/footer/FooterCard";
 import { Link } from "react-router-dom";
 import avatarlogo from './images/avatar.png';
-
+import applogo from '../../common/logo.jpg'
 
 
 function PatientLanding(props) {
@@ -39,9 +39,10 @@ function PatientLanding(props) {
 
   return (
     <>
-            <nav className="navbar navbar-expand-lg shadow-lg" style={{background: "#332cf2"}}>
+            <nav className="navbar navbar-expand-lg shadow-lg" style={{background: "#0A1CCC"}}>
   <div className="container-fluid">
-    <a className="navbar-brand text-light fw-bold" href=" ">BeHealthy </a>
+  <Link to="/"> <img src={applogo} alt="" /></Link>
+ 
     <button className="navbar-toggler bg-light" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span className="navbar-toggler-icon"></span>
     </button>
@@ -56,7 +57,7 @@ function PatientLanding(props) {
         <img src={avatarlogo} classsName="mx-3" alt="" type="button" data-bs-toggle="dropdown" style={{width:"55px",height:"55px",marginLeft:"30px",marginRight:"80px"}}/> 
           <ul class="dropdown-menu">
             <li><a class="dropdown-item" href=" ">View profile</a></li>
-            <li><a class="dropdown-item" href=" ">Logout</a></li>
+            <li><Link to='/login' class="dropdown-item">Logout</Link></li>
           </ul>
         </div>
       </ul>

@@ -10,7 +10,7 @@ function Pateintroute(props) {
         <div>
             
       
-       <Navbars subnav={'Home'}></Navbars>
+       <Navbars subnav={'Home'} subnav3={'logout'}></Navbars>
 
      <Container fluid className='profile-container'>
      <Row className='profile-row'>

@@ -4,13 +4,13 @@ import { Outlet } from 'react-router-dom';
 
 import SideNavBar from './Sidebar';
 import './Sidebar.css'
-import Navbar from './Navbars';
+import Navbars from './Navbars';
 
 function HomePage() {
   return (
   <>
    
-    <Navbar/>
+    <Navbars subnav={'Home'} subnav3={'Logout'}/>
      <Container fluid className='profile-container'>
      <Row className='profile-row'>
           <img className='profilebg' src='https://media.istockphoto.com/photos/doctor-in-hospital-background-with-copy-space-picture-id949812160?k=20&m=949812160&s=170667a&w=0&h=d37eip7n1YrRu2wZxkKndJb_IR6DevLpXbAWBzzWVD8='/>

@@ -55,14 +55,17 @@ function Login2(props) {
   
     return (
         <div>
-               <Navbars subnav="Home"/>
+               <Navbars subnav="Home" display="d-none"/>
             <div className="container-fluid px-5 px-md-5 px-lg-1 px-xl-5 py-2 mx-auto vh-100 login-container">
-    <div className="card card0 border-0">
+    <div className="card card0 border-0 mt-5">
         <div className="row d-flex">
             <div className="col-lg-7">
                 <div className="card1 pb-5">
                     <div className="row">
-                        <img src={logo} className="logo"/>
+                        {/* <img src={logo} className="logo"/> */}
+                        {/* <h3 className="text-uppercase text-center mt-5">
+                          Welcome to BeHealthy
+                        </h3> */}
                     </div>
                     <div className="row px-3 justify-content-center mt-4 mb-5 border-line">
                         <img src={bgdoc} className="login-image"/>
@@ -71,7 +74,7 @@ function Login2(props) {
             </div>
             <div className="col-lg-5">
                 <div className="card2 card border-0 px-4 py-5 mt-5 column-1">
-                    <h1 className='mt-5 mb-5 web-title'>Welcome to BeHealthfy</h1>
+                    <h1 className='mt-5 mb-5 web-title'>Login</h1>
                 <form onSubmit={handleSubmit}>
                     
                     <div className="row mb-3">
