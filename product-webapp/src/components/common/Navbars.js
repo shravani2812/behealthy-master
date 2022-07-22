@@ -1,13 +1,13 @@
 import React from "react";
 import { Link } from "react-router-dom";
-
+import applogo from './logo.jpg'
 
 
 function Navbars(props) {
   return (
-    <nav className="navbar navbar-expand-lg shadow-lg" style={{background: "#332cf2"}}>
+    <nav className="navbar navbar-expand-lg shadow-lg" style={{background: "#0A1CCC"}}>
     <div className="container-fluid">
-      <a className="navbar-brand text-light fw-bold" >BeHealthy</a>
+    <img src={applogo} alt="" />
       <button className="navbar-toggler bg-light" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span className="navbar-toggler-icon"></span>
       </button>
