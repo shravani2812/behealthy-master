@@ -26,13 +26,13 @@ class SideNavBar extends React.Component {
           <div className="p-4" style={{"padding":"10px"}}>
               {/* <i className="fa fa-file" aria-hidden="true"></i>  */}
               <Nav defaultActiveKey="/" className="flex-column">
-              <Nav.Link as={Link} to="/">
+              <Nav.Link as={Link} to="viewslot">
               <div style={{"display":"flex","flexDirection":"row"}}>
               <i className="fas fa-file-alt"></i>
               <p>View Slots</p>
               </div>
                 </Nav.Link>
-              <Nav.Link eventKey="link-1" as={Link} to="/slot">
+              <Nav.Link eventKey="link-1" as={Link} to="createslot">
               <div style={{"display":"flex","flexDirection":"row"}}>
               <i className="fas fa-file-alt"></i>
               <p>Create Slots</p>

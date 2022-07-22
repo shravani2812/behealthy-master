@@ -15,6 +15,10 @@ import Appointments from './components/patient-profile/pages/Appointments';
 //import Login from './components/login/Login';
 import Login2 from './components/login/Login2';
 import Register from './components/register/Register';
+import DoctorsList from './components/patient-profile/pages/DoctorsList';
+import BookSlot from './components/patient-profile/pages/BookSlot';
+import ViewSlot from './components/doctor-profile/Pages/ViewSlot';
+import CreatSlot from './components/doctor-profile/Pages/CreateSlot';
 
 
 
@@ -34,6 +38,8 @@ function App() {
         <Route path="/patient" element={<PatientLanding />} />
         <Route path="doctor" element={<HomePage/>} >
            <Route path="profile" element={<Main/>}/>
+           <Route path="viewslot" element={<ViewSlot/>}/>
+           <Route path="createslot" element={<CreatSlot/>}/>
         </Route>
        
        
@@ -43,6 +49,8 @@ function App() {
        <Route path="appointment" element={<Appointments />} />
         <Route path="support" element={<Support />} />
         <Route path="profile" element={<Profile />} />
+        <Route path="availabledoctors" element={<DoctorsList/>}/>
+        <Route path="bookslot" element={<BookSlot/>}/>
       </Route > 
 
       <Route path='/login' element={<Login2/>}></Route>

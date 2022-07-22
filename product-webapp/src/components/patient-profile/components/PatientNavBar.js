@@ -32,7 +32,7 @@ class PatientNavBar extends React.Component {
               <p>View Appointment</p>
               </div>
                 </Nav.Link>
-              <Nav.Link eventKey="link-1" as={Link} to="/slot">
+              <Nav.Link eventKey="link-1" as={Link} to="bookslot">
               <div style={{"display":"flex","flexDirection":"row"}}>
               <i className="fas fa-file-alt"></i>
               <p>Create Slots</p>
@@ -44,7 +44,7 @@ class PatientNavBar extends React.Component {
               <p>View your profile</p>
               </div>
               </Nav.Link>
-              <Nav.Link eventKey="link-2" as={Link} to="/bookappointment">
+              <Nav.Link eventKey="link-2" as={Link} to="availabledoctors">
               <div style={{"display":"flex","flexDirection":"row"}}>
               <i className="fas fa-info-circle"></i>
               {/* <i class="fas fa-search"></i> */}

@@ -70,7 +70,7 @@ function UserHome(props) {
 						<span>24 Hours Service</span>
 						<h4 className="mb-3">Online Appoinment</h4>
 						<p className="mb-4">Get ALl time support for emergency.We have introduced the principle of family medicine.</p>
-						<Link to="/patientpro/appointment"><span className="btns btns-mains btns-round-full">Make a appoinment</span></Link>
+						<Link to="/patientpro/availabledoctors"><span className="btns btns-mains btns-round-full">Make a appoinment</span></Link>
 					</div>
 				
 					<div className="feature-item mb-5 mb-lg-0">
