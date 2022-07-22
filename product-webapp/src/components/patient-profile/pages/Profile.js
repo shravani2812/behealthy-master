@@ -6,6 +6,7 @@ import "./Profile.css";
 import AddPateint from '../components/forms/AddPatientProfile';
 import EditPateint from '../components/forms/EditPatientProfile';
 import ViewPateint from '../components/forms/ViewPatientProfile';
+
 function Profile(props) {
 
 
@@ -85,54 +86,49 @@ setEditing(false);
 
 
   return (
-    <div className="mycontainer">
-      <div
-        className="container-fluid"
-        style={{ background: " linear-gradient(to right,  #B6CDEE, #BCBFFD )" }}
-      >
-        <div className="row">
-          <div className="col-6 mt-5" style={{ marginLeft: "250px" }}>
-            <Image />
-          </div>
-          <div className="col-4 mt-5">
-            <h3 className="display-5 text-uppercase username">
-              Hello username
-            </h3>
-          </div>
-        </div>
-      </div>
-      <section className="vh-75 vw-100 mt-4 gradient-custom">
-        <div className="container-fluid py-2 h-100">
-          <div className="row justify-content-center align-items-center h-100">
-            <div
-              className="col-xxl-5 col-lg-3 col-xl-5 bgImg "
+ 
+    <div>
+         
+       <div className='container mt-5' >
+       <h2 className="text-uppercase text-center">
+                  View/Add Profile:
+                </h2>
+    
+    <Image/>
+  </div>
+      <section className="vh-75 vw-75 mt-4 gradient-custom">
+        <div className="container-fluid h-100">
+          <div className="row h-100">
+            {/* <div
+              className="col-xxl-4 col-lg-3 col-xl-5 bgImg "
               style={{ zIndex: "-1", position: "relative" }}
             >
               <img
-                src="https://img.freepik.com/free-vector/employees-cv-candidates-resume-corporate-workers-students-id-isolate-flat-design-element-job-applications-avatars-personal-information-concept-illustration_335657-1661.jpg"
-                className="rounded-circle"
+                src="https://media.istockphoto.com/vectors/happy-diverse-students-celebrating-graduation-from-school-vector-id1227151024?k=20&m=1227151024&s=612x612&w=0&h=LixPEQebppS7yyIOiGWVUwrk3sHTctZ8sb65EmXTs64=" alt=""
+               
               />
-            </div>
+            </div> */}
             
   
     {editing ? (
-            
+             
               <EditPateint
               currentUser={currentUser}
                 setEditing={setEditing}
                 updateUser={updateUser}
                 viewPatient={viewPatient}
               />
+          
          
           ) : (
             
-             <div className="col-xxl-7 col-lg-9 col-xl-7 col-xs-12" style ={{display: displayVal}}>
+             <div className="col-xxl-12 col-lg-9 col-xl-7 col-xs-12" style ={{display: displayVal}}>
               <AddPateint addPateint={addPateint} viewPatient={viewPatient}/>
             </div>
           )}
            {
           listView &&(
-            <div className="col-xxl-7 col-lg-9 col-xl-7 col-xs-12">
+            <div className="col-xxl-12 col-lg-9 col-xl-7 col-xs-12">
             <ViewPateint
               users={users}
               viewPatient={viewPatient}
@@ -146,6 +142,7 @@ setEditing(false);
         </div>
       </section>
     </div>
+
   );
 }
 

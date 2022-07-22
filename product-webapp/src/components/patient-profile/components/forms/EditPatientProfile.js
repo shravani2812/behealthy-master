@@ -58,11 +58,11 @@ function EditPatientProfile(props) {
     
     return (
         <>
-            <div className="col-xxl-7 col-lg-9 col-xl-7 col-xs-12">
+            <div className="col-xxl-12 col-lg-9 col-xl-7 col-xs-12">
               <div className="shadow-sm p-3 mb-5 bg-body rounded border-top-0 border-opacity-50">
-                <h2 className="text-uppercase text-center">
-                  Profile Creation:
-                </h2>
+                <h3 className="text-uppercase text-center">
+                  Edit Profile:
+                </h3>
                 <div className="card-body p-4 p-md-5">
                   <form onSubmit={handleSubmit}>
                     <div className="row">

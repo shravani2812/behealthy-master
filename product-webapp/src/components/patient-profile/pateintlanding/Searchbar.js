@@ -1,6 +1,7 @@
 import React,{useState} from 'react';
 import { FcSearch } from "@react-icons/all-files/fc/FcSearch";
 import { AiFillCloseCircle } from "@react-icons/all-files/ai/AiFillCloseCircle";
+import { Link } from 'react-router-dom';
 function Searchbar({ placeholder, data }) {
     const [filteredData, setFilteredData] = useState([]);
     const [mailData, setFilterMail] = useState([]);
@@ -64,9 +65,9 @@ function Searchbar({ placeholder, data }) {
               <div className='text-dark'>
                   First Name:
              
-              <a className="serachvalue" href={value.link} target="_blank">
+              <Link className="serachvalue" to='/doctor' >
                 <li className='list-group-item'>{value.firstName} </li>
-              </a>
+              </Link>
               </div>
             );
           })}
@@ -81,10 +82,10 @@ function Searchbar({ placeholder, data }) {
            
             return (
             
-              <a className="" href={value.link} target="_blank">
+              <Link className="serachvalue" to='/doctor' >
                  
                 <li className='list-group-item'>{value.mail} </li>
-              </a>
+              </Link>
              
             );
           })}

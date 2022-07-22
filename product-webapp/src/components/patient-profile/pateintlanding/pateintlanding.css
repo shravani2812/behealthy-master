@@ -68,31 +68,44 @@
    #navbarNav{
     justify-content:flex-end;
   }
-
-  .cssbut-io-button {
-    display: flex;
-    align-items: center;
-    font-family: inherit;
-    font-weight: 500;
-    font-size: 20px;
-    padding: 0.8em 1.5em 0.8em 1.2em;
-    color: white;
-    background: #ad5389;
-    /* background: linear-gradient(0deg, rgba(77,54,208,1) 0%, rgba(132,116,254,1) 100%); */
+  .bn632-hover {
+    width: 160px;
+    font-size: 16px;
+    font-weight: 600;
+    color: #fff;
+    cursor: pointer;
+    margin: 20px;
+    height: 55px;
+    text-align: center;
     border: none;
-    box-shadow: 0 0.7em 1.5em -0.5em #4d36d0be;
-    letter-spacing: 0.05em;
-    border-radius: 20em;
-   }
-   
-   
-   .cssbut-io-button:hover {
-    box-shadow: 0 0.5em 1.5em -0.5em #4d36d0be;
-   }
-   
-   .cssbut-io-button:active {
-    box-shadow: 0 0.3em 1em -0.5em #4d36d0be;
-   }
-
+    background-size: 300% 100%;
+    border-radius: 50px;
+    -o-transition: all 0.4s ease-in-out;
+    -webkit-transition: all 0.4s ease-in-out;
+    transition: all 0.4s ease-in-out;
+  }
+  
+  .bn632-hover:hover {
+    background-position: 100% 0;
+    moz-transition: all .4s ease-in-out;
+    -o-transition: all .4s ease-in-out;
+    -webkit-transition: all .4s ease-in-out;
+    transition: all .4s ease-in-out;
+  }
+  
+  .bn632-hover:focus {
+    outline: none;
+  }
+  
+  .bn632-hover.bn24 {
+    background-image: linear-gradient(
+        to right,
+        #6253e1,
+        #852d91,
+        #a3a1ff,
+        #f24645
+      );
+    box-shadow: 0 4px 15px 0 rgba(126, 52, 161, 0.75);
+  }
 
   

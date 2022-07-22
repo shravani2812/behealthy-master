@@ -16,7 +16,7 @@ import { useEffect } from "react";
 import axios from "axios";
 import FooterCard from "../../userlanding/footer/FooterCard";
 import { Link } from "react-router-dom";
-
+import avatarlogo from './images/avatar.png';
 
 
 
@@ -49,7 +49,16 @@ function PatientLanding(props) {
       <ul className="navbar-nav">
         <li className="nav-item">
           <Link className="nav-link active fs-5 mx-2 text-light"  to="/">Home</Link>
-        </li>     
+        </li> 
+      
+      
+        <div class="dropdown-center">
+        <img src={avatarlogo} classsName="mx-3" alt="" type="button" data-bs-toggle="dropdown" style={{width:"55px",height:"55px",marginLeft:"30px",marginRight:"80px"}}/> 
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href=" ">View profile</a></li>
+            <li><a class="dropdown-item" href=" ">Logout</a></li>
+          </ul>
+        </div>
       </ul>
     </div>
   </div>
@@ -143,9 +152,9 @@ function PatientLanding(props) {
         <li className="list-group-item fs-5"><i className="fa-solid fa-2 text-warning m-2"></i>Excellence in Healthcare every.</li>
         <li className="list-group-item fs-5"><i className="fa-solid fa-3 text-danger m-2"></i>Building a healthy environment.</li>
       </ul>
-      <button className="cssbut-io-button mx-3 ">
-        <span><Link to="/patientpro/appointments">View All</Link></span>
-      </button>
+      
+       <Link to="/patientpro/appointment"><button className="bn632-hover bn24 mx-3 ">View All </button></Link>
+     
       </div>
      
     </div>

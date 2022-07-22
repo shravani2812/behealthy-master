@@ -115,16 +115,16 @@ function AddPatientProfile(props) {
         <>
            
               <div className="shadow-sm p-3 mb-5 bg-body rounded border-top-0 border-opacity-50">
-                <h2 className="text-uppercase text-center">
-                  Profile Creation:
-                </h2>
+                <h3 className="text-uppercase text-center">
+                  Add Profile
+                </h3>
                 <div className="card-body p-4 p-md-5">
                   <form onSubmit={handleSubmit}>
                     <div className="row">
                       <div className="col-md-6 ">
                         <div className="form-outline">
                           <input
-                            type="text"
+                          
                             id="firstName"
                             name="firstName"
                             minLength={3}
@@ -144,7 +144,7 @@ function AddPatientProfile(props) {
                       <div className="col-md-6 mb-4">
                         <div className="form-outline">
                           <input
-                            type="text"
+                           
                             id="lastName"
                             name="lastName"
                             className="form-control form-control-lg"
@@ -275,7 +275,7 @@ function AddPatientProfile(props) {
                       <div className="col-md-3 mb-4 pb-2">
                         <div className="form-outline">
                           <input
-                            type="tel"
+                            type="number"
                             id="height"
                             className="form-control form-control-lg"
                             name="height"

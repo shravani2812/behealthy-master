@@ -24,19 +24,17 @@ function Appointments(){
         setType(e.target.value);
     }
     useEffect(() => {
-        if(type == "all"){
+        if(type === "all"){
             getAll();
-        } else if(type == "pending") {
+        } else if(type === "pending") {
             getpending();
         } else {
             getcompleted();
         }
     },[type]);
     return(
-            <div>
-                {
-
-                }
+            <div className='me-5'>
+             
             <div className="row" style={{ height: "5rem"}}>
                 <div className="col-6" style={{ borderWidth: "4px", borderBottom:"solid", borderColor:"#CAD5E2"}}>
                     <h3 style={{ padding: "2%" ,paddingLeft: "36%"}}>0 PATIENT CONSULTED</h3>
@@ -70,7 +68,7 @@ function Appointments(){
             {appointments.map((curElem)=> { 
                 return(
                     <div className="page-content page-container" id="page-content">
-                        <div className="padding" style={{paddingTop: "2%", paddingLeft: "9%"}}>
+                        <div className="padding" style={{paddingTop: "2%"}}>
                             <div className="row container d-flex justify-content-center">
                                 <div className="col-lg-8 grid-margin stretch-card">
                                     <div className="card" style={{width:"123%", height:"100%"}}>
