@@ -4,7 +4,7 @@ import Cards from './cards/Cards';
 import NewsCard from './healthcard/NewsCard';
 import Testimonals from './feedback/Testimonals';
 import FooterCard from './footer/FooterCard';
-
+import applogo from '../common/logo.jpg'
 import { Link } from 'react-router-dom';
 
 
@@ -12,9 +12,9 @@ function UserHome(props) {
     return (
         <>
         <header>
-        <nav className="navbar navbar-expand-lg shadow-lg" style={{background: "#332cf2"}}>
+        <nav className="navbar navbar-expand-lg shadow-lg" style={{background: "#0A1CCC"}}>
   <div className="container-fluid">
-    <a className="navbar-brand text-light fw-bold" href=" ">BeHealthy </a>
+  <img src={applogo} alt="" />
     <button className="navbar-toggler bg-light" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span className="navbar-toggler-icon"></span>
     </button>
@@ -27,11 +27,11 @@ function UserHome(props) {
           <Link className="nav-link fs-5 mx-2 text-light" to="/patient">Find doctors</Link>
         </li>
         <li className="nav-item">
-          <a className="nav-link fs-5 mx-2 text-light" href=" ">Services</a>
+		<Link className="nav-link fs-5 mx-2 text-light" to="/doctor/profile"> Doctor Page</Link>
         </li>
         <li className="nav-item mx-2">
 		{/* <Link to="/">Login here</Link> */}
-        <Link to='/register' className={{textDecoration:'none'}}><button className="button-83 text-dark" >Login/Register</button></Link>
+        <Link to='/register' style={{textDecoration:'none'}}><button className="button-83 text-dark" >Login/Register</button></Link>
         </li>
       </ul>
     </div>
@@ -47,13 +47,11 @@ function UserHome(props) {
 			<div className="col-lg-6 col-md-12 col-xl-7">
 				<div className="block">
 					<div className="divider mb-3"></div>
-					<span className="text-uppercase text-sm letter-spacing ">Total Health care solution</span>
+					
 					<h1 className="mb-3 mt-3 m">Your most trusted health partner</h1>
 					
 					<p className="mb-4 pr-5">A repudiandae ipsam labore ipsa voluptatum quidem quae laudantium quisquam aperiam maiores sunt fugit, deserunt rem suscipit placeat.</p>
-					<div className="btn-container ">
-						<a href=" " target="_blank" className="btn btn-main-2 btn-icon btn-round-full">Book an appoinment <i className="icofont-simple-right ml-2  "></i></a>
-					</div>
+					
 				</div>
 			</div>
 		</div>
@@ -72,7 +70,7 @@ function UserHome(props) {
 						<span>24 Hours Service</span>
 						<h4 className="mb-3">Online Appoinment</h4>
 						<p className="mb-4">Get ALl time support for emergency.We have introduced the principle of family medicine.</p>
-						<a href="appoinment.html" className="btns btns-mains btns-round-full">Make a appoinment</a>
+						<Link to="/patientpro/appointment"><span className="btns btns-mains btns-round-full">Make a appoinment</span></Link>
 					</div>
 				
 					<div className="feature-item mb-5 mb-lg-0">
