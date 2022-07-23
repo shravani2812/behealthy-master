@@ -21,7 +21,8 @@ public class Timeslot {
   @Transient
    public static final String SEQUENCE_NAME = "user_sequence";
 
-    public Timeslot(String doctorEmail, LocalDate slotDate, LocalTime appointmentStartTime, LocalTime appointmentEndTime, Boolean slotAvailability) {
+    public Timeslot(int slotId, String doctorEmail, LocalDate slotDate, LocalTime appointmentStartTime, LocalTime appointmentEndTime, Boolean slotAvailability) {
+        this.slotId = slotId;
         this.doctorEmail = doctorEmail;
         this.slotDate = slotDate;
         this.appointmentStartTime = appointmentStartTime;
