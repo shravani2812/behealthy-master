@@ -1,6 +1,6 @@
 package com.stackroute.service;
 
-import com.stackroute.dto.UserDto;
+import com.stackroute.Rabbitmq.UserDto;
 import com.stackroute.exception.UserNotFoundException;
 import com.stackroute.model.User;
 import com.stackroute.repo.AuthRepo;

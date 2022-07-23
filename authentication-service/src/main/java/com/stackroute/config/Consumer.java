@@ -1,7 +1,7 @@
 package com.stackroute.config;
 
 
-import com.stackroute.dto.UserDto;
+import com.stackroute.Rabbitmq.UserDto;
 import com.stackroute.model.User;
 import com.stackroute.service.UserService;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
@@ -21,6 +21,7 @@ public class Consumer {
         User user = new User();
         user.setEmailId(userDto.getEmailId());
         user.setPassword(userDto.getPassword());
+        user.setUserRole(userDto.getUserRole());
         userService.saveUser(user);
     }
 
