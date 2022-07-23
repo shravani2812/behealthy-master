@@ -3,6 +3,8 @@ package com.stackroute.appointmentService.rabbitmq;
 
 import lombok.*;
 
+
+
 @Setter
 @Getter
 @NoArgsConstructor
