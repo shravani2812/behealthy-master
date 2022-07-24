@@ -15,7 +15,11 @@
 	<description>Eureka server for Be Healthy</description>
 	<properties>
 		<java.version>11</java.version>
+<<<<<<< HEAD
 		<spring-cloud.version>2020.0.2</spring-cloud.version>
+=======
+		<spring-cloud.version>2020.0.4</spring-cloud.version>
+>>>>>>> fde964c6bd0f91b2261e5b4a731cef699e85101e
 	</properties>
 	<dependencies>
 		<dependency>

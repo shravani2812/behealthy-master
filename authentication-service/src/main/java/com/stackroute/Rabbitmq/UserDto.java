@@ -1,4 +1,4 @@
-package com.stackroute.dto;
+package com.stackroute.Rabbitmq;
 
 import com.stackroute.model.UserRole;
 import lombok.*;
