@@ -21,3 +21,15 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+git rm -r --cached node_modules
+
+git commit -am "node_modules be gone!"
+
+git push origin frontend-v1
+
+git rm -r --cached package-lock.json
+
+git commit -am "packagelock be gone!"
+
+git push origin frontend-v1
