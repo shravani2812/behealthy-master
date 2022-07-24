@@ -23,7 +23,7 @@ public class EmailController {
 
 
     // method to send-email
-    @PostMapping("/sendemail")
+    @PostMapping("/email/sendemail")
     public String sendEmail(@RequestBody Email email){
 
         String status = emailService.sendEmail(email);
