@@ -1,21 +1,14 @@
 package com.stackroute.dto;
 
 import com.stackroute.model.UserRole;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
-
-@Data
+@Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Entity
-@Table
+@ToString
 public class UserDto {
-    @Id
     private String emailId;
     private String password;
     private UserRole userRole;

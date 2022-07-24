@@ -36,7 +36,7 @@ public class UserController {
         Map<String, String> map = null;
         try {
             User userObj = userService.findByEmailIdAndPassword(user.getEmailId(), user.getPassword());
-            if (userObj.getEmailId().equals(user.getEmailId())) {
+            if (userObj.getEmailId().equals(user.getEmailId()) && userObj.getPassword().equals(user.getPassword())) {
                 map=securityTokenGenerator.generateToken(user);
                 map.put("userRole",userObj.getUserRole().name());
                 map.put("emailId", userObj.getEmailId());
@@ -52,12 +52,7 @@ public class UserController {
         }
         return responseEntity;
     }
-    //First step is to register the user
-    @PostMapping("/register")
-    public ResponseEntity<User>  saveUser(@RequestBody User user) {
 
-        return new ResponseEntity<>(userService.saveUser(user), HttpStatus.CREATED);
-    }
 
 
 }
