@@ -15,12 +15,16 @@ public class MessageConfig
     public static final String ROUTING_KEY = "AppointmentDetails_routingKey";
 
 
+
     @Bean
     public DirectExchange exchange()
     {
 
         return new DirectExchange(EXCHANGE);
     }
+
+
+
 
     @Bean
     public Jackson2JsonMessageConverter converter()
