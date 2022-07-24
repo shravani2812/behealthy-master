@@ -1,11 +1,9 @@
 package com.stackroute.config;
 
-<<<<<<< HEAD
-import com.stackroute.dto.UserDto;
-=======
+
 
 import com.stackroute.Rabbitmq.UserDto;
->>>>>>> fde964c6bd0f91b2261e5b4a731cef699e85101e
+
 import com.stackroute.model.User;
 import com.stackroute.service.UserService;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
