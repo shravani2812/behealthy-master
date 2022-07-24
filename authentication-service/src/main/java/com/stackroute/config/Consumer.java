@@ -1,6 +1,5 @@
 package com.stackroute.config;
 
-
 import com.stackroute.Rabbitmq.UserDto;
 
 import com.stackroute.model.User;
