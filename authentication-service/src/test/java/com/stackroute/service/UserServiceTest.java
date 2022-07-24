@@ -15,10 +15,9 @@ import static com.stackroute.model.UserRole.PATIENT;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.times;
+
 import static org.mockito.Mockito.when;
-import static org.mockito.Mockito.*;
+
 
 @ExtendWith(MockitoExtension.class)
 public class UserServiceTest {
@@ -43,12 +42,7 @@ public class UserServiceTest {
         user = null;
     }
 
-    @Test
-    public void givenUserToSaveShouldReturnSavedUser() {
-        when(userRepository.save(any())).thenReturn(user);
-        assertEquals(user,userService.saveUser(user));
-        verify(userRepository,times(1)).save(any());
-    }
+
 
 
 

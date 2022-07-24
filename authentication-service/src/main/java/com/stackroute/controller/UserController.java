@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
 import java.util.Map;
 
 @RestController
@@ -24,40 +23,30 @@ public class UserController {
     //This is User controller class
 
     @Autowired
-    public UserController(UserService userService,SecurityTokenGenerator securityTokenGenerator)
-    {
+    public UserController(UserService userService, SecurityTokenGenerator securityTokenGenerator) {
         this.userService = userService;
-        this.securityTokenGenerator=securityTokenGenerator;
-
+        this.securityTokenGenerator = securityTokenGenerator;
     }
+
     //This is login for mapping for user using which user can login using the credentials
     @PostMapping("/auth/login")
-    public ResponseEntity loginUser(@RequestBody User user) throws UserNotFoundException {
+    public ResponseEntity loginUser(@RequestBody User user) throws UserNotFoundException
+    {
         Map<String, String> map = null;
         try {
             User userObj = userService.findByEmailIdAndPassword(user.getEmailId(), user.getPassword());
-            if (userObj.getEmailId().equals(user.getEmailId())) {
-                map=securityTokenGenerator.generateToken(user);
-                map.put("userRole",userObj.getUserRole().name());
+            if (userObj.getEmailId().equals(user.getEmailId()) && userObj.getPassword().equals(user.getPassword())) {
+                map = securityTokenGenerator.generateToken(user);
+                map.put("userRole", userObj.getUserRole().name());
                 map.put("emailId", userObj.getEmailId());
 
             }
             responseEntity = new ResponseEntity(map, HttpStatus.OK);
-        }
-        catch(UserNotFoundException e){
+        } catch (UserNotFoundException e) {
             throw new UserNotFoundException();
-        }
-        catch (Exception e){
+        } catch (Exception e) {
             responseEntity = new ResponseEntity("Try after sometime!!!", HttpStatus.OK);
         }
         return responseEntity;
     }
-    //First step is to register the user
-    @PostMapping("/auth/register")
-    public ResponseEntity<User>  saveUser(@RequestBody User user) {
-
-        return new ResponseEntity<>(userService.saveUser(user), HttpStatus.CREATED);
-    }
-
-
 }

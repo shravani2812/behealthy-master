@@ -32,18 +32,15 @@ public class AppointmentController {
     }
 
     // to update appointmentStatus by appointmentId
-
     @PatchMapping("/updateAppointmentStatusByAppointmentId/{appointmentId}")
     public ResponseEntity<Appointment> updateAppointmentStatus(@PathVariable(name="appointmentId" ) int appointmentId) {
         Appointment appointment = appointmentService.updateAppointmentStatusByAppointmentId(appointmentId);
         return new ResponseEntity<>(appointment, HttpStatus.OK);
-
     }
 
 
     // to get appointment by appointmentId
-
-    @GetMapping("/getAppointmentByAppointmentId/{appointmentId}")
+        @GetMapping("/getAppointmentByAppointmentId/{appointmentId}")
     public ResponseEntity<Appointment> getAppointmentsByAppointmentId(@PathVariable("appointmentId") int appointmentId){
         Appointment appointment =  appointmentService.getAppointmentById(appointmentId);
         return new ResponseEntity(appointment, HttpStatus.OK);
@@ -51,7 +48,6 @@ public class AppointmentController {
 
 
     //to get appointment by patientEmail
-
     @GetMapping("/getAppointmentsByPatientEmail/{patientEmail}")
     public ResponseEntity<Appointment> getAppointmentsByPatientEmail(@PathVariable("patientEmail") String patientEmail){
        List<Appointment> appointments=  appointmentService.getAllAppointmentsByPatientEmail(patientEmail);
@@ -59,7 +55,6 @@ public class AppointmentController {
     }
 
     //to get appointment by doctorEmail
-
     @GetMapping("/getAppointmentsByDoctorEmail/{doctorEmail}")
     public ResponseEntity<Appointment> getAppointmentsByDoctorEmail(@PathVariable("doctorEmail") String doctorEmail){
         List<Appointment> appointments=  appointmentService.getAllAppointmentsByDoctorEmail(doctorEmail);
@@ -68,7 +63,6 @@ public class AppointmentController {
 
 
     // to delete appointment by appointmentId
-
     @DeleteMapping("/deleteAppointmentsByAppointmentId/{appointmentId}")
     public ResponseEntity<String> deleteAppointmentsByAppointmentId(@PathVariable("appointmentId") int appointmentId){
          appointmentService.deleteByAppointmentId(appointmentId);

@@ -18,7 +18,7 @@ import static com.stackroute.model.UserRole.PATIENT;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+
 
 @ExtendWith(MockitoExtension.class)
 public class UserControllerTest {
@@ -40,15 +40,6 @@ public class UserControllerTest {
         mockMvc = MockMvcBuilders.standaloneSetup(userController).build();
     }
 
-    @Test
-    public void givenUserToSaveShouldReturnSavedUser() throws Exception {
-        when(userService.saveUser(any())).thenReturn(user);
-        mockMvc.perform(post("/api/v1/register")
-                        .contentType(MediaType.APPLICATION_JSON)
-                        .content(asJsonString(user)))
-                .andExpect(status().isCreated());
-        verify(userService,times(1)).saveUser(any());
-    }
 
 
     @Test

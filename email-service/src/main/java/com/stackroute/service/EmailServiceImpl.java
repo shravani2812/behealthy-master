@@ -2,15 +2,11 @@ package com.stackroute.service;
 
 import com.stackroute.model.Email;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.core.io.FileSystemResource;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
-
 import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
-import java.io.File;
 
 
 @Service
@@ -23,9 +19,6 @@ public class EmailServiceImpl implements EmailService {
         this.javaMailSender=javaMailSender;
     }
 
-    @Value("${spring.mail.username}")
-    private String sender;
-
 
     public String sendEmail(Email email) {
 
@@ -35,14 +28,10 @@ public class EmailServiceImpl implements EmailService {
 
         try {
             mimeMessageHelper = new MimeMessageHelper(mimeMessage, true);
-            mimeMessageHelper.setFrom(sender);
             mimeMessageHelper.setTo(email.getTo());
-            mimeMessageHelper.setSubject(email.getSubject());
+            mimeMessageHelper.setSubject("Be Healthy Appointment Booking Details");
             mimeMessageHelper.setText(email.getMessage());
 
-            FileSystemResource file = new FileSystemResource(new File(email.getAttachment()));
-
-            mimeMessageHelper.addAttachment(file.getFilename(), file);
 
             javaMailSender.send(mimeMessage);
 

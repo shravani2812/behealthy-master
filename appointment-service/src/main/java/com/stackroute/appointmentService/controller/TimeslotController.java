@@ -39,9 +39,7 @@ public class TimeslotController {
     public ResponseEntity<Timeslot> updateSlotAvailability(@PathVariable(name="slotId" ) int slotId) {
        Timeslot slot = timeslotService.updateSlotAvailabilityBySlotId(slotId);
        return new ResponseEntity<>(slot, HttpStatus.OK);
-
     }
-
 
    // to get timeslot by slotDate and doctorEmail
 

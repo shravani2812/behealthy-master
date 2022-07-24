@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 
 @RestController
-@RequestMapping("/api/v1")
+@RequestMapping("/api/v1/email")
 
 public class EmailController {
 
@@ -20,6 +20,7 @@ public class EmailController {
     public EmailController(EmailService emailService) {
         this.emailService = emailService;
     }
+
 
 
     // method to send-email
