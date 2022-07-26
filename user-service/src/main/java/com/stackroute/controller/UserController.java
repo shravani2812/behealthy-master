@@ -9,12 +9,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
 import javax.validation.Valid;
 import java.util.List;
-
+@CrossOrigin(origins = "http://localhost:3000")
 @RestController
 @RequestMapping("/api/v1")
+
 public class UserController
 {
     @Autowired
@@ -32,6 +32,7 @@ public class UserController
 
     //method to create a doctor record in db
     @PostMapping("/doctor")
+
     public ResponseEntity<Doctor> createDoctorProfile(@Valid @RequestBody Doctor doctor)
     {
         return new ResponseEntity<>(doctorService.createDoctorProfile(doctor), HttpStatus.CREATED);
@@ -39,6 +40,7 @@ public class UserController
 
     //method to get doctor by emailID
     @GetMapping("/doctor/doctorEmail/{doctorEmail}")
+
     public ResponseEntity<?> getDoctorByEmail(@PathVariable ("doctorEmail") String doctorEmail) throws ResourceNotFoundException
     {
         Doctor doctor = doctorService.findById(doctorEmail).orElseThrow(() -> new ResourceNotFoundException
