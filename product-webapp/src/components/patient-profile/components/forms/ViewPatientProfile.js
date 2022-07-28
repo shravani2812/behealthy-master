@@ -7,7 +7,7 @@ function ViewPatientProfile(props) {
                 {
                     props.users.length>0?(
                         props.users.map((user)=>{
-                            const {id, firstName,contactNo,lastName,age,height,weight,blood,gender} = user;
+                            const {id, firstName,contactNum,lastName,age,height,weight,bloodGroup,gender} = user;
                             return(
                                
                                 <div key={id} className="shadow-sm p-3 mb-5 bg-body rounded border-top-0 border-opacity-25">
@@ -19,25 +19,25 @@ function ViewPatientProfile(props) {
                                       <div className="row">
                                         <div className="col-md-6 ">
                                           <div className="form-outline">
-                                          <h4 className="text-bold">
+                                          <h4 className="h3 text-primary">
                                           First Name:
                                             </h4>
-                                            <p>
+                                            <h4 className='text-bold'>
                                              
                                               {firstName}
-                                            </p>
+                                            </h4>
                                           
                                           </div>
                                         </div>
                                         <div className="col-md-6 mb-4">
                                           <div className="form-outline">
-                                          <h4 className="text-bold">
+                                          <h4 className="h3">
                                           Last Name:
                                             </h4>
-                                            <p>
+                                            <h4 className='text-bold'>
                                              
                                               {lastName}
-                                            </p>
+                                            </h4>
                                            
                                           </div>
                                         </div>
@@ -46,38 +46,37 @@ function ViewPatientProfile(props) {
                                       <div className="row">
                                         <div className="col-md-3 mb-4 pb-2">
                                           <div className="form-outline">
-                                          <h4 className="text-bold">
+                                          <h4 className="h3">
                                           Age:
                                             </h4>
-                                            <p>
+                                            <h4 className='text-bold'>
                                              
                                               {age}
-                                            </p>
+                                            </h4>
                                             
                                           </div>
                                         </div>
                                         <div className="col-md-3 mb-4 pb-2">
                                           <div className="form-outline">
-                                          <h4 className="text-bold">
+                                          <h4 className="h3">
                                           Gender:
                                             </h4>
-                                            <p>
+                                            <h4 className='text-bold'>
                                              
                                               {gender}
-                                            </p>
+                                            </h4>
                                            
                                           </div>
                                         </div>
                                         <div className="col-md-6 mb-4 d-flex align-items-center">
                                           <div className="form-outline w-100">
-                                          <h4 className="text-bold">
-                                          Contact No:
+                                          <h4 className="h3">
+                                          Contact Number:
                                             </h4>
-                                            <p>
+                                            <h4 className='text-bold'>
                                              
-                                              {contactNo}
-                                            </p>
-                                           
+                                              {contactNum}
+                                            </h4>
                                           </div>
                                         </div>
                                       </div>
@@ -85,37 +84,36 @@ function ViewPatientProfile(props) {
                                       <div className="row">
                                         <div className="col-md-6 mb-4 pb-2">
                                           <div className="form-outline">
-                                          <h4 className="text-bold">
-                                          Blood Group:
+                                          <h4 className="h3">
+                                         Blood Group:
                                             </h4>
-                                            <p>
+                                            <h4 className='text-bold'>
                                              
-                                              {blood}
-                                            </p>
+                                              {bloodGroup}
+                                            </h4>
                                            
                                           </div>
                                         </div>
                                         <div className="col-md-3 mb-4 pb-2">
                                           <div className="form-outline">
-                                          <h4 className="text-bold">
+                                          <h4 className="h3">
                                           Weight:
                                             </h4>
-                                            <p>
+                                            <h4 className='text-bold'>
                                              
                                               {weight}
-                                            </p>
-                                           
+                                            </h4>
                                           </div>
                                         </div>
                                         <div className="col-md-3 mb-4 pb-2">
                                           <div className="form-outline">
-                                          <h4 className="text-bold">
+                                          <h4 className="h3">
                                          Height:
                                             </h4>
-                                            <p>
+                                            <h4 className='text-bold'>
                                              
                                               {height}
-                                            </p>
+                                            </h4>
                                             
                                           </div>
                                         </div>

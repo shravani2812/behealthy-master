@@ -1,32 +1,67 @@
 import React from 'react';
 import { useEffect, useState } from "react";
-import { Link } from 'react-router-dom';
+import { Link, Navigate } from 'react-router-dom';
 import './Login2.css'
 import logo from './Logo.png';
 import bgdoc from './bg-doctor.jpg';
 import Navbars from '../common/Navbars';
-
-
+import axios from "axios";
+import { useUserContext } from "../context/userContext";
+import HomePage from '../common/HomePage';
+import PatientLanding from '../patient-profile/pateintlanding/PatientLanding';
+import { useNavigate } from "react-router-dom";
 
 function Login2(props) {
-
-    const initialValues = { email : "", password: ""};
+  const { user } = useUserContext();
+    const initialValues = { emailId : "", password: ""};
+    const { logIn } = useUserContext();
     const [formValues, setFormValues] = useState(initialValues);
     const [formErrors, setFormErrors] = useState({});
     const [isSubmit, setIsSubmit] = useState(false);
-   
+    const navigate = useNavigate();
   
     const handleChange = (e) => {
         const { name, value } = e.target;
         setFormValues({...formValues, [name] : value});
         //console.log(formValues)
-        console.log(e.target.value)
       }
+
+      const loginUser =  (formValues) => {
+        let user=
+          {
+            emailId: formValues.email,
+            password: formValues.password,       
+          }
+        console.log(user);
+       
+         axios.post('https://behealthy.stackroute.io//auth/api/v1/auth/login',user
+         ).then((response)=>{
+           
+           
+            console.log("Data: ", response.data);
+            logIn(response.data.emailId,response.data.userRole);
+            console.log(response.data.userRole);
+            if(response.data.userRole==='DOCTOR'){
+              navigate('/doctor/profile')
+            }else{
+              navigate('/patient')
+            }
+          }).then((err)=>{
+            console.log(err);
+          });
+         
+    
+       
+      };
+
+
+      
   
     const handleSubmit = (e) => {
       e.preventDefault();
       setFormErrors(validate(formValues));
       setIsSubmit(true);
+      loginUser(formValues);
     }
   
     useEffect(() => {
@@ -93,6 +128,7 @@ function Login2(props) {
 
                     <div className="mt-4 pt-2 text-center">
                       <button className="bn632-hover bn26 mt-3 mb-5">LOGIN</button>
+                    
                     </div>
 
                     <p className="text-center text-muted style">Don't have an account? 

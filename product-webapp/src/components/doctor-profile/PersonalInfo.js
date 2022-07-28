@@ -1,21 +1,26 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Formik } from "formik";
 import { Button } from "antd";
 import { Input,InputNumber } from "formik-antd";
 import MultiStepFormContext from "./Multiformcontext";
 import './doctor.css';
-
+import { Select } from "antd";
+import { useUserContext } from "../context/userContext";
+import Image from './Image';
 const PersonalInfo = () => {
-  const { personal, setPersonal, next } = useContext(MultiStepFormContext);
-
-
+  const { personal, setPersonal, next,updateValues,profileDetails,userPhots } = useContext(MultiStepFormContext);
+  const { user, logOut } = useUserContext();
+  const { Option } = Select;
+  console.log(updateValues);
   return (
     <Formik
-      initialValues={personal}
+    enableReinitialize={true}
+    initialValues={profileDetails }
       onSubmit={(values) => {
+       
         setPersonal(values);
         next();
-      }}
+      }} 
     
       validate={(values) => {
         const errors = {};
@@ -25,6 +30,7 @@ const PersonalInfo = () => {
         if (!(/^[a-zA-Z](\s?[a-zA-Z]){2,16}$/).test(values.lastName)) errors.lastName="Provide valid first name"
         if (!values.address) errors.address = "Address is required";
         if (!values.age) errors.age = "Age is required";
+        // if (!values.gender) errors.gender = "Gender is required";
         if(!(values.age<100 && values.age>18)) errors.age="provide valid age";
         if (!values.contactNo) errors.contactNo = "Contact Number is required";
         if(!(/^\+?([0-9]{2})\)?[-. ]?([0-9]{4})[-. ]?([0-9]{4})$/.test(values.contactNo)))  errors.contactNo = "Provide valid mininum 10 number"
@@ -34,24 +40,27 @@ const PersonalInfo = () => {
         return errors;
       }}
     >
-      {({ handleSubmit, errors }) => {
+      {({ handleSubmit, errors,values, handleChange }) => {
         return (
-         
+        
           <div className={"details__wrapper"}>
             <div className="container">
               <div className="row">
                 <div className="col-xxl-6 leftImg">
-                  <img src="https://st3.depositphotos.com/3382541/12567/v/600/depositphotos_125674406-stock-illustration-businessman-sitting-at-working-plac.jpg" style={{position:'relative',bottom:'120px',right:'29px'}}></img>
+                  <img src="https://st3.depositphotos.com/3382541/12567/v/600/depositphotos_125674406-stock-illustration-businessman-sitting-at-working-plac.jpg" style={{position:'relative',bottom:'120px',right:'29px'}} alt=""/>
                 </div>
+               
                 <div className="col-xxl-6">
+            
                    <h3>Personal Info:</h3>
+                
                 <div className="row">
                
               <div className="col-md-6">
                
                 <div className={`form__item ${errors.firstName && "input__error"}`}>
                   <label>FirstName</label>
-                  <Input name={"firstName"}  className="form-control"/>
+                  <Input name={"firstName"} className="form-control" />
                   <p className={"error__feedback"}>{errors.firstName}</p>
                 </div>
               </div>
@@ -71,12 +80,28 @@ const PersonalInfo = () => {
                   <p className={"error__feedback"}>{errors.address}</p>
                 </div>
               </div>
-              <div className="col-md-6">
+              <div className="col-md-3">
                 <div className={`form__item ${errors.name && "input__error"}`}>
                 <label>Age</label>
-                <InputNumber name={"age"}  className="form-control"/>
+                <Input name={"age"}  className="form-control"/>
                          
                   <p className={"error__feedback"}>{errors.age}</p>
+                </div>
+              </div>
+              <div className="col-md-3">
+                <div className={`form__item ${errors.name && "input__error"}`}>
+                <label>Gender</label>
+
+                <Select defaultValue="MALE"  onChange={handleChange}
+            name="gender"
+          
+            style={{ width: 120 }}
+          
+        >
+          <Option value="MALE">Male</Option>
+          <Option value="FEMAIL">Female</Option>
+        </Select>       
+                  <p className={"error__feedback"}></p>
                 </div>
               </div>
             </div>

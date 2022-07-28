@@ -20,12 +20,13 @@ public class Appointment{
     @Transient
     public static final String Sequence_Name = "Appointment_Sequence";
 
-    public Appointment(String doctorEmail, LocalDate appointmentDate, LocalTime appointmentStartTime, LocalTime appointmentEndTime, int slotId, String patientEmail, String patientDescription, Status status) {
+    public Appointment(int appointmentId, String doctorEmail, String doctorName, LocalDate appointmentDate, LocalTime appointmentStartTime, LocalTime appointmentEndTime, String patientEmail, String patientDescription, Status status) {
+        this.appointmentId = appointmentId;
         this.doctorEmail = doctorEmail;
+        this.doctorName = doctorName;
         this.appointmentDate = appointmentDate;
         this.appointmentStartTime = appointmentStartTime;
         this.appointmentEndTime = appointmentEndTime;
-        this.slotId = slotId;
         this.patientEmail = patientEmail;
         this.patientDescription = patientDescription;
         this.status = status;
@@ -34,6 +35,8 @@ public class Appointment{
     @Id
     private int appointmentId;
     private String doctorEmail;
+
+    private String doctorName;
 
     private LocalDate appointmentDate;
 

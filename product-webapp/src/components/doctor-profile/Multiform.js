@@ -6,21 +6,26 @@ import ClinicInfo from "./ClinicInfo";
 import PersonalInfo from "./PersonalInfo";
 import ListDoctorInfo from "./ListDoctorInfo";
 import axios from 'axios';
-
+import { useUserContext } from "../context/userContext";
+import { BackTop, Button, Col, Row,Container } from "antd";
+import Updateuser from "./Updateuser";
 
 
 const { Step } = Steps;
 
 
 
-let id=Math.floor(Math.random() * 16) + 5;
+
 const detailsInitialState = {
   firstName: "",
   lastName: "",
   address:"",
   contactNo:"",
   age:"",
-  mail:`test${id}@gmail.com`
+  mail:"",
+  gender:"",
+  img:""
+  
 };
 
 const experienceInitialState = {
@@ -52,40 +57,65 @@ const renderStep = (step) => {
   }
 };
 
-const Multiform = () => {
+const Multiform = ({userPhoto}) => {
+  const detailsInitialState = {
+    firstName: "",
+    lastName: "",
+    address:"",
+    contactNo:"",
+    age:"",
+    mail:"",
+    gender:"",
+    img:""
+    
+  };
   const [personal, setPersonal] = useState(detailsInitialState);
   const [experience, setExperience] = useState(experienceInitialState);
   const [clinic, setClinic] = useState(clinicInitialState);
+ 
   const [currentStep, setCurrentStep] = useState(0);
+  const [oldUser, setOldUser] = useState(false);
+   const [profileDetails,setProfile]=useState({});
+   const { user, logOut } = useUserContext();
 
   useEffect(()=>{
+ 
     async function doGetProfile() {
-        let res = await axios.get(`http://localhost:8001/doctorInfo/18`);
-        console.log(res);
+        let res = await axios.get(`https://behealthy.stackroute.io//user/api/v1/doctor/doctorEmail/${user.name}`);
         setProfile(res.data);
-        
-        console.log(profileDetails.firstName);
+        localStorage.setItem("docImg",res.data.doctorImage);
       }doGetProfile()
   },[])
-  
-  const [profileDetails,setProfile]=useState({});
 
+  
+  
+ 
   const next = () => {
     if (currentStep === 3) {
       setCurrentStep(0);
       setPersonal(detailsInitialState);
       setExperience(experienceInitialState);
       setClinic(clinicInitialState)
+      
       return;
     }
     setCurrentStep(currentStep + 1);
   };
   const prev = () => setCurrentStep(currentStep - 1);
+  if(oldUser){
+   
+    return(<>
+    
+     <Updateuser/>
+    </>
+    
+   )
+   
+  }else 
   return (
     
     <>
-   
-    <Provider value={{ personal, setPersonal, next, prev, experience, setExperience,clinic,setClinic }}>
+    <Provider value={{ personal, setPersonal, next, prev, experience, setExperience,clinic,setClinic ,setProfile,profileDetails,userPhoto}}>
     <Steps current={currentStep}>
         <Step title={"Personal details"} />
         <Step title={"Experience details"} />

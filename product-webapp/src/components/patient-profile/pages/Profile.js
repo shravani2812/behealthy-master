@@ -6,31 +6,55 @@ import "./Profile.css";
 import AddPateint from '../components/forms/AddPatientProfile';
 import EditPateint from '../components/forms/EditPatientProfile';
 import ViewPateint from '../components/forms/ViewPatientProfile';
+import { useUserContext } from "../../context/userContext";
 
 function Profile(props) {
 
 
-
+  const { user, logOut } = useUserContext();
   const [users, setUsers] = useState([]);
   const [listView, setProfile] = useState(false);
   const [displayVal, setDisplay] = useState("block")
   const [editing, setEditing] = useState(false);
+  
+  const [profileDetails,setPatient]=useState({});
+  const[profilepic,setProfilePic]=useState()
+  
 
-  const url='http://localhost:8001/profileinfo';
-    const addPateint = (user) => {
-      user.id = users.length + 1;
-      axios.post(url,
-        {
-         
-          firstName: user.firstName,
-          lastName: user.lastName,
-          age: user.age,
-          contactNo:user.contactNo,
-          height:user.height,
-          weight:user.weight,
-          blood:user.blood,
-          gender:user.gender
-        }).then((response)=>{
+  useEffect(()=>{
+ 
+    async function doGetProfile() {
+        let res = await axios.get(`https://behealthy.stackroute.io//user/api/v1/patient/patientEmail/julie@gmail.com`);
+        setPatient(res.data);
+        console.log(res.data);
+       
+      }doGetProfile()
+  },[])
+  
+
+
+    const addPateint = (userProfile) => {
+      
+      const url=`https://behealthy.stackroute.io//user/api/v1/update/patientEmail/julie@gmail.com`;
+    
+      console.log(profileDetails+" "+profileDetails.patientPassword+" "+profileDetails.userRole);
+      let addProfile={
+        firstName: userProfile.firstName,
+        lastName: userProfile.lastName,
+        age: userProfile.age,
+        contactNum:userProfile.contactNo,
+        height:userProfile.height,
+        weight:userProfile.weight,
+        bloodGroup:userProfile.blood,
+        gender:userProfile.gender,
+        patientEmail:profileDetails.patientEmail,
+        patientPassword:profileDetails.patientPassword,
+        userRole:profileDetails.userRole,
+        patientImage:profilepic
+      }
+      console.log(addProfile);
+      axios.put(url,
+       addProfile).then((response)=>{
          
          
           console.log("Data: ", response.data);
@@ -59,18 +83,13 @@ function Profile(props) {
   };
 
 
-    useEffect(()=>{
-      async function doGetProfile() {
-          let res = await axios.get('http://localhost:8001/profileinfo');
-          setUsers(res.data)
-        }doGetProfile()
-  },[])
+
 
 
   const updateUser = (newUser) => {
     console.log("New user"+ newUser);
           
-    axios.put(`http://localhost:8001/profileinfo/${newUser.id}`, newUser)
+    axios.put(`https://behealthy.stackroute.io//user/api/v1/update/patientEmail/julie@gmail.com`, newUser)
     .then(response => {
       
         console.log("Data: ", response.data);
@@ -84,6 +103,13 @@ setCurrentUser(initialUser);
 setEditing(false);
 };
 
+const uploadImg=(url)=>{
+  
+  console.log(url);
+  setProfilePic(url);
+  
+};
+
 
   return (
  
@@ -94,7 +120,8 @@ setEditing(false);
                   View/Add Profile:
                 </h2>
     
-    <Image/>
+    <Image uploadImg={uploadImg}/>
+  
   </div>
       <section className="vh-75 vw-75 mt-4 gradient-custom">
         <div className="container-fluid h-100">

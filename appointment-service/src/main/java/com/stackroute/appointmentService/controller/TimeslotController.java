@@ -53,10 +53,26 @@ public class TimeslotController {
     }
 
 
+    @GetMapping("/getAllSlots")
+    public ResponseEntity<List<Timeslot>> getAllTimeslots(){
 
+        List<Timeslot> allTimeslots = timeslotService.findAllTimeslots();
+        return new ResponseEntity<>(allTimeslots,HttpStatus.FOUND);
+    }
 
+    // to update created Timeslot based on slotId
+    @PutMapping("/updateTimeslot/{slotId}")
+    public ResponseEntity<Timeslot> updateTimeslot(@PathVariable (name ="slotId") int slotId, @RequestBody Timeslot timeslot){
+        Timeslot slot = timeslotService.updateTimeslot(slotId,timeslot);
+        return new ResponseEntity<>(slot,HttpStatus.OK);
+    }
 
-
+    // to delete Timeslot by slotId
+    @DeleteMapping("/deleteTimeslot/{slotId}")
+    public ResponseEntity<String> deleteTimeslotById(@PathVariable(name="slotId") int slotId){
+        timeslotService.deleteTimeslot(slotId);
+        return new ResponseEntity<String>("Timeslot deleted successfully..!!",HttpStatus.GONE);
+    }
 
 
 }

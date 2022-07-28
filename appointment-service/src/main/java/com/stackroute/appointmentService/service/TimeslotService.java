@@ -17,4 +17,10 @@ public interface TimeslotService {
 
     List<Timeslot> getSlotByDateAndDoctorEmail(LocalDate slotDate, String doctorEmail);
 
+    List<Timeslot> findAllTimeslots();
+
+    Timeslot updateTimeslot(int slotId, Timeslot timeslot);
+
+    void deleteTimeslot(int slotId);
+
 }
