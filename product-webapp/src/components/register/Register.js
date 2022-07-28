@@ -52,7 +52,7 @@ function Register(props) {
    debugger;
       if(doctor.userRole==='DOCTOR'){
         
-        axios.post('https://behealthy.stackroute.io//user/api/v1/doctor',doctor
+        axios.post('https://behealthy.stackroute.io/user/api/v1/doctor',doctor
         ).then((response)=>{
           
           
@@ -63,7 +63,7 @@ function Register(props) {
            console.log(err);
          });
       }else{
-        axios.post('https://behealthy.stackroute.io//user/api/v1/patient',patient
+        axios.post('https://behealthy.stackroute.io/user/api/v1/patient',patient
         ).then((response)=>{
           
           

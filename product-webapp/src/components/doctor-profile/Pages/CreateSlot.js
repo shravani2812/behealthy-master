@@ -83,14 +83,14 @@ function CreatSlot() {
             appointmentEndTime: endTime
         }
 
-        // const res = axios.post("https://behealthy.stackroute.io//appointment/api/v1/saveTimeslot", json, {
+        // const res = axios.post("https://behealthy.stackroute.io/appointment/api/v1/saveTimeslot", json, {
         //     headers: {
         //         "Content-Type": "application/json",
         //     },
         // });
         // console.log(res);
 
-        // axios.post(`https://behealthy.stackroute.io//appointment/api/v1/saveTimeslot`, { json })
+        // axios.post(`https://behealthy.stackroute.io/appointment/api/v1/saveTimeslot`, { json })
         //     .then(res => {
         //         console.log(res);
         //         console.log(res.data);
@@ -98,7 +98,7 @@ function CreatSlot() {
         //     })
 
         debugger;
-        axios.post('https://behealthy.stackroute.io//appointment/api/v1/saveTimeslot', jsonData
+        axios.post('https://behealthy.stackroute.io/appointment/api/v1/saveTimeslot', jsonData
         ).then((response) => {
             console.log("Data: ", response.data);
             alert("Slot created Successfully ...!");

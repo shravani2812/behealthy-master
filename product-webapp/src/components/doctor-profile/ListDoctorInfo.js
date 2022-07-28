@@ -17,7 +17,7 @@ const ListDoctorInfo = () => {
   useEffect(()=>{
     console.log(profileDetails);
     debugger;
-    const url=`https://behealthy.stackroute.io//user/api/v1/doctor/update/doctorEmail/${user.name}`;
+    const url=`https://behealthy.stackroute.io/user/api/v1/doctor/update/doctorEmail/${user.name}`;
     let doctorDetails={
       
         
@@ -62,7 +62,7 @@ const ListDoctorInfo = () => {
         onSubmit={(values) => {
          console.log(values);
          debugger;
-         const url=`https://behealthy.stackroute.io//user/api/v1/doctor/update/doctorEmail/${user.name}`;
+         const url=`https://behealthy.stackroute.io/user/api/v1/doctor/update/doctorEmail/${user.name}`;
          axios.put(url,values
           ).then((res)=>{
              console.log(res);

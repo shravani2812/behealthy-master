@@ -81,7 +81,7 @@ const Multiform = ({userPhoto}) => {
   useEffect(()=>{
  
     async function doGetProfile() {
-        let res = await axios.get(`https://behealthy.stackroute.io//user/api/v1/doctor/doctorEmail/${user.name}`);
+        let res = await axios.get(`https://behealthy.stackroute.io/user/api/v1/doctor/doctorEmail/${user.name}`);
         setProfile(res.data);
         localStorage.setItem("docImg",res.data.doctorImage);
       }doGetProfile()

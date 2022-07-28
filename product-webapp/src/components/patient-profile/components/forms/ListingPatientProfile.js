@@ -10,7 +10,7 @@ const ListingPatientProfile = () => {
 
 //   const fetchData = () => {
 //     setIsLoading(true)
-//     fetch("https://behealthy.stackroute.io//user/api/v1/patient/patientEmail/asdf@gmail.com")
+//     fetch("https://behealthy.stackroute.io/user/api/v1/patient/patientEmail/asdf@gmail.com")
 //       .then(response => {
 //         return response.json()
 //       })

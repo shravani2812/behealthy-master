@@ -32,7 +32,7 @@ function DoctorsList(props) {
 
         axios({
                 method : 'get',
-                url:'https://behealthy.stackroute.io//user/api/v1/doctor/getAllDoctor',
+                url:'https://behealthy.stackroute.io/user/api/v1/doctor/getAllDoctor',
                 headers: {
                     'Content-Type': 'application/json',
                     'Accept': 'application/json'
@@ -53,7 +53,7 @@ function DoctorsList(props) {
     // }
     const getSelectedData = () => {
 
-        // fetch(`https://behealthy.stackroute.io//user/api/v1/doctor/doctorEmail/doctor1@gmail.com`
+        // fetch(`https://behealthy.stackroute.io/user/api/v1/doctor/doctorEmail/doctor1@gmail.com`
         //     , {
         //         headers: {
         //             'Content-Type': 'application/json',
@@ -75,7 +75,7 @@ function DoctorsList(props) {
 
 
     // async function addProfile(list) {
-    //     let res = await axios.get(`https://behealthy.stackroute.io//user/api/v1/doctor/doctorEmail/${list.doctorEmail}`);
+    //     let res = await axios.get(`https://behealthy.stackroute.io/user/api/v1/doctor/doctorEmail/${list.doctorEmail}`);
     //     setSelectedData(res.data);
     //     console.log(res.data);
     //   }
@@ -85,7 +85,7 @@ function DoctorsList(props) {
 
         axios({
                 method : 'get',
-                url : `https://behealthy.stackroute.io//user/api/v1/doctor/doctorEmail/${list.doctorEmail}`,
+                url : `https://behealthy.stackroute.io/user/api/v1/doctor/doctorEmail/${list.doctorEmail}`,
                 headers: {
                     'Content-Type': 'application/json',
                     'Accept': 'application/json'

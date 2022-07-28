@@ -80,8 +80,8 @@ function ViewSlot() {
         // debugger;
         axios({
             method: 'get',
-            url: `https://behealthy.stackroute.io//appointment/api/v1/slotByDate/${jsonData1.slotDate}/${jsonData1.doctorEmail}`,
-            // url: `https://behealthy.stackroute.io//appointment/api/v1/slotByDate/2022-07-24/vedant@gmail.com`,
+            url: `https://behealthy.stackroute.io/appointment/api/v1/slotByDate/${jsonData1.slotDate}/${jsonData1.doctorEmail}`,
+            // url: `https://behealthy.stackroute.io/appointment/api/v1/slotByDate/2022-07-24/vedant@gmail.com`,
             // url: `localhost:8585/appointment/api/v1/getAllSlots`,
             responseType: 'stream'
         })
@@ -127,7 +127,7 @@ function ViewSlot() {
     }
     const submit = (e) => {
         e.preventDefault();
-        axios.put(`https://behealthy.stackroute.io//appointment/api/v1/updateTimeslot/${updateSlots.slotId}`, editJSONdata)
+        axios.put(`https://behealthy.stackroute.io/appointment/api/v1/updateTimeslot/${updateSlots.slotId}`, editJSONdata)
         .then(response => {
             console.log(response);
         }).catch(err => console.log(err));
@@ -169,7 +169,7 @@ function ViewSlot() {
 
     const deleteItem = (id) => {
         // Whatever you want to do with that item
-        axios.delete(`https://behealthy.stackroute.io//appointment/api/v1/deleteTimeslot/${id}`).then(response => {
+        axios.delete(`https://behealthy.stackroute.io/appointment/api/v1/deleteTimeslot/${id}`).then(response => {
             console.log(response);
 
         });

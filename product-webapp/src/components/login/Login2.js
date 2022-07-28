@@ -34,7 +34,7 @@ function Login2(props) {
           }
         console.log(user);
        
-         axios.post('https://behealthy.stackroute.io//auth/api/v1/auth/login',user
+         axios.post('https://behealthy.stackroute.io/auth/api/v1/auth/login',user
          ).then((response)=>{
            
            

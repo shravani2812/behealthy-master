@@ -9,7 +9,7 @@ const GetAllDoctorsAPI = () => {
   
     useEffect(() => {
       async function fetchAllDoctor() {
-        const fullResponse = await fetch(`https://behealthy.stackroute.io//user/api/v1/doctor/getAllDoctor`);
+        const fullResponse = await fetch(`https://behealthy.stackroute.io/user/api/v1/doctor/getAllDoctor`);
         const responseJson = await fullResponse.json();
         console.log(responseJson);
         usersSet(responseJson);

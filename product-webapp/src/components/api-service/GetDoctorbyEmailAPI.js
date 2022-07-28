@@ -9,7 +9,7 @@ const GetDoctorbyEmailAPI= () => {
   
     React.useEffect(() => {
       async function fetchDoctorDetails() {
-        const fullResponse = await fetch(`https://behealthy.stackroute.io//user/api/v1/doctor/doctorEmail/alex@gmail.com`);
+        const fullResponse = await fetch(`https://behealthy.stackroute.io/user/api/v1/doctor/doctorEmail/alex@gmail.com`);
         const responseJson = await fullResponse.json();
         
         usersSet(responseJson.data);
