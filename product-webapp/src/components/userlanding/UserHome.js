@@ -6,9 +6,10 @@ import Testimonals from './feedback/Testimonals';
 import FooterCard from './footer/FooterCard';
 import applogo from '../common/logo.jpg'
 import { Link } from 'react-router-dom';
-
+import { useUserContext } from "../context/userContext";
 
 function UserHome(props) {
+	const { user, logOut } = useUserContext();
     return (
         <>
         <header>
@@ -31,7 +32,9 @@ function UserHome(props) {
         </li>
         <li className="nav-item mx-2">
 		{/* <Link to="/">Login here</Link> */}
-        <Link to='/register' style={{textDecoration:'none'}}><button className="button-83 text-dark" >Login/Register</button></Link>
+		{user.isGuestUser ?   <Link to='/register' style={{textDecoration:'none'}}><button className="button-83 text-dark" >Login/Register</button></Link> : <span className='nav-link fs-5 mx-2 text-info text-uppercase'> Welcome {user.name.substring(0, user.name.lastIndexOf("@"))}</span>}
+      
+		
         </li>
       </ul>
     </div>

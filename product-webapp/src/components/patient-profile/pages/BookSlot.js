@@ -10,15 +10,17 @@ import Form from 'react-bootstrap/Form';
 import Modal from 'react-bootstrap/Modal';
 import { useLocation } from 'react-router-dom';
 import axios from 'axios';
+import { useUserContext } from '../../context/userContext';
 
 const BookSlot = () => {
 
+    
     const location = useLocation();
     // location.state.email
     const [getDoctorData, setDoctorSlot] = useState([]);
     const [getSlotData, setSlotData] = useState();
     const [selectedSlot, setSlot] = useState();
-
+    const { user, logOut } = useUserContext();
     const [description, setDescription] = useState();
 
     const preDate = moment(new Date()).format("DD/MM/YYYY");
@@ -119,7 +121,7 @@ const BookSlot = () => {
             appointmentDate: selectedDate,
             appointmentStartTime: selectedSlot.appointmentStartTime,
             appointmentEndTime: selectedSlot.appointmentEndTime,
-            patientEmail: "pat@gmail.com",
+            patientEmail: user.name,
             patientDescription: description
         }
         axios.post('http://localhost:8585/appointment/api/v1/saveAppointment', jsonBookData
@@ -148,7 +150,7 @@ const BookSlot = () => {
             {/* <Alert message={`You selected date: ${selectedValue?.format('YYYY-MM-DD')}`} /> */}
             <Container fluid style={{ "margin": "0px" }}>
                 <Card className="my-3">
-                    <Card.Img className="patient-img" src="https://static.bangkokpost.com/media/content/20200619/c1_1937552_200619122619.jpg" alt="IMAGE" />
+                   
                     {/* <Card.Header>
                 <p>this is header</p>
                 <p>this is header</p>

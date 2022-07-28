@@ -7,13 +7,20 @@ import Col from 'react-bootstrap/esm/Col';
 import {useEffect, useState} from 'react';
 import { Button } from 'react-bootstrap';
 import axios from 'axios';
+import { useUserContext } from '../../context/userContext';
+
+import { MeetingProvider, useMeeting } from "@videosdk.live/react-sdk";
 
 function Appointments(){
+    const meeting = useMeeting();
+
     const [appointments, setappointments] = useState([]);
     const [type, setType] = useState("all");
+    const { user, logOut } = useUserContext();
     const getAll = async () => {
-        const response = await fetch(`http://localhost:8585/appointment/api/v1/getAppointmentsByPatientEmail/pat@gmail.com`);
+        const response = await fetch(`http://localhost:8585/appointment/api/v1/getAppointmentsByPatientEmail/${user.name}`);
         setappointments(await response.json());
+        
     }
     
     const getpending = async () => {
@@ -37,25 +44,29 @@ function Appointments(){
         }
     },[type]);
 
+    const joinMeeting=()=>{
+        meeting?.join();
+    }
+
     const deleteAppointment = (data) => {
         axios.delete(`http://localhost:8585/appointment/api/v1/deleteAppointmentsByAppointmentId/${data.appointmentId}`).then(response => {
             console.log(response);
         });
         alert("Record Delete successfully ...!")
-        window.location.reload(); 
+        //window.location.reload(); 
     }
 
     return(
             <div className='me-5'>
              
-            <div className="row" style={{ height: "5rem"}}>
+            {/* <div className="row" style={{ height: "5rem"}}>
                 <div className="col-6" style={{ borderWidth: "4px", borderBottom:"solid", borderColor:"#CAD5E2"}}>
                     <h3 style={{ padding: "2%" ,paddingLeft: "36%"}}>0 TOTAL CONSULTED</h3>
                 </div>
                 <div className="col-6" style={{ borderWidth: "4px", borderBottom:"solid", borderColor:"#CAD5E2"}}>
                 <h3 style={{ padding: "2%" ,paddingLeft: "27%"}}>0 COMPLETED APPOINTMENTS</h3>
                 </div>
-            </div>
+            </div> */}
             <div className='row' style={{borderBottomWidth: "3px", borderBottomStyle: "solid", borderBottomColor: "#CAD5E2"}}>
                 <div className='col-12'>
                     <h4 className='text-center'>LIST OF APPOINTMENTS</h4>
@@ -90,7 +101,7 @@ function Appointments(){
                                                 <table className="table" style={{margin:"0"}}>
                                                     <tbody>
                                                         <tr>
-                                                        <td rowSpan={2} className="image"><img style={{width:"100px", position: "relative", left: "18%"}} className="rounded-circle" src={logo}></img></td>
+                                                        <td rowSpan={2} className="image"></td>
                                                         <td style={{fontWeight: "bold"}}>Doctor Name:</td>
                                                         <td style={{fontWeight: "bold"}}>Doctor Email:</td>
                                                         <td style={{fontWeight: "bold"}}>Date:</td>
@@ -105,7 +116,7 @@ function Appointments(){
                                                         <td>{curElem.status}</td>
                                                         </tr>
                                                         <tr style={{borderWidth:"1px", borderStyle:"solid", borderColor: "#CAD5E2", backgroundColor: "#9c88ff", color: "white"}}>
-                                                        <td style={{paddingLeft:"5%"}}><Button style={{"background":"none","padding":"unset","border":"none"}}>Video Consult</Button></td>
+                                                        <td style={{paddingLeft:"5%"}}><Button style={{"background":"none","padding":"unset","border":"none"}} onClick={joinMeeting}>Video Consult</Button></td>
                                                         <td style={{paddingLeft: "3%"}}><Button style={{"background":"none","padding":"unset","border":"none"}}>Patient Profile</Button></td>
                                                         {/* <td>Reschedule</td> */}
                                                         <td  style={{width: "20%"}}><Button style={{"background":"none","padding":"unset","border":"none"}}>Chat</Button></td>

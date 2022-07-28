@@ -13,13 +13,16 @@ import "react-datepicker/dist/react-datepicker.css";
 import axios from 'axios';
 import moment from 'moment';
 import { Alert, Calendar } from 'antd';
+import 'antd/dist/antd.css';
+import 'react-time-picker/dist/TimePicker.css'
 // import 'react-time-picker/dist/TimePicker.css';
-
+import { useUserContext } from '../../context/userContext';
 function CreatSlot() {
     // moment(new Date, 'DD-MM-YYYY').format()
 
     const [data, setData] = useState([]);
     const preDate = moment(new Date()).format("DD/MM/YYYY HH:MM:SS");
+    const { user, logOut } = useUserContext();
 
     const [startDate, setStartDate] = useState(new Date());
 
@@ -74,7 +77,7 @@ function CreatSlot() {
             // date: currentDate,
             // start_time: startTime,
             // end_time: endTime
-            doctorEmail: "payal@gmail.com",
+            doctorEmail: user.name,
             slotDate: startDate,
             appointmentStartTime: startTime,
             appointmentEndTime: endTime
@@ -94,7 +97,7 @@ function CreatSlot() {
         //         setData(res);
         //     })
 
-
+        debugger;
         axios.post('http://localhost:8585/appointment/api/v1/saveTimeslot', jsonData
         ).then((response) => {
             console.log("Data: ", response.data);
@@ -153,7 +156,7 @@ function CreatSlot() {
                                     label=""
                                     className="mb-4"
                                 >
-                                    <TimePicker onChange={handleStartTime} value={startTime} />
+                                    <TimePicker type="time" onChange={handleStartTime} value={startTime} />
                                 </FloatingLabel>
                                 <FloatingLabel
                                     controlId="floatingInput"
@@ -162,10 +165,7 @@ function CreatSlot() {
                                 >
                                     <TimePicker onChange={handleEndTime} value={endTime} />
                                 </FloatingLabel>
-                                <Card.Footer className='my-3'>
-                                    {/* <Chip label={data.startTime} /> */}
-                                    <Chip label="09:00Am-10:00Am" />
-                                </Card.Footer>
+                               
                                 <Button className="button my-3" type='submit' variant="success">CREATE SLOT</Button>
                             </Card.Body>
                         </Card>

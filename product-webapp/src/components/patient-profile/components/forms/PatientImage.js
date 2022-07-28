@@ -1,3 +1,4 @@
+
 import { LoadingOutlined, PlusOutlined } from '@ant-design/icons';
 import { message, Upload } from 'antd';
 import React, { useContext, useState } from 'react';
@@ -27,7 +28,7 @@ const getBase64 = (img, callback) => {
 
 const App = (props) => {
   const [loading, setLoading] = useState(false);
-  const [imageUrl, setImageUrl] = useState(localStorage.getItem("docImg"));
+  const [imageUrl, setImageUrl] = useState();
 
 
  
@@ -42,9 +43,9 @@ const App = (props) => {
       getBase64(info.file.originFileObj, (url) => {
         setLoading(false);
         setImageUrl(url);
-        
-       props.setProfilePic(url)
-        //props.uploadImg(url)
+        debugger;
+       // props.setProfilePic(url)
+        props.uploadImg(url)
         
         
       });

@@ -13,13 +13,15 @@ import moment from 'moment';
 import Modal from 'react-bootstrap/Modal';
 import TimePicker from 'react-time-picker';
 import axios from 'axios';
-
+import { useUserContext } from '../../context/userContext';
 function ViewSlot() {
 
     // Modal Hooks
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
+
+    const { user, logOut } = useUserContext();
 
     // Time picker Hooks
     const [value, setValue] = useState(moment('07/13/2022'));
@@ -72,7 +74,7 @@ function ViewSlot() {
             // date: currentDate,
             // start_time: startTime,
             // end_time: endTime
-            doctorEmail: "payal@gmail.com",
+            doctorEmail: user.name,
             slotDate: currentDate
         }
         // debugger;
@@ -130,7 +132,7 @@ function ViewSlot() {
             console.log(response);
         }).catch(err => console.log(err));
           alert("Record Updated successfully ...!")
-          window.location.reload();
+         // window.location.reload();
     }
 
     //   setResults(newArray);
@@ -172,7 +174,7 @@ function ViewSlot() {
 
         });
         alert("Record Delete successfully ...!")
-        window.location.reload();  
+      //  window.location.reload();  
     }
 
     const selectedDate = selectedValue.format('YYYY-MM-DD');

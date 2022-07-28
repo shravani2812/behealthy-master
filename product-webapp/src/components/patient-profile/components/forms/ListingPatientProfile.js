@@ -1,12 +1,36 @@
-import React from 'react';
+import axios from "axios"
+import React, { useEffect, useState } from "react"
+import GetPatientProfile from "../../../api-service/GetPatientProfile"
 
-function ViewPatientProfile(props) {
+
+const ListingPatientProfile = () => {
+  const [users, setUsers] = useState([])
+  const [isLoading, setIsLoading] = useState(false)
+  const [patientusers] = GetPatientProfile();
+
+//   const fetchData = () => {
+//     setIsLoading(true)
+//     fetch("http://localhost:8585/user/api/v1/patient/patientEmail/asdf@gmail.com")
+//       .then(response => {
+//         return response.json()
+//       })
+//       .then(data => {
+//         setIsLoading(false)
+//         setUsers(data)
+//       },5000)
+//   }
+
+
+  if(isLoading){
+    return "hello"
+  }
+  if(users.length>0){
     return (
-       <>
-           
-                {
-                    props.users.length>0?(
-                        props.users.map((user)=>{
+        <div>
+         
+         {
+                    patientusers.length>0?(
+                        patientusers.map((user)=>{
                             const {id, firstName,contactNum,lastName,age,height,weight,bloodGroup,gender} = user;
                             return(
                                
@@ -119,12 +143,12 @@ function ViewPatientProfile(props) {
                                         </div>
                                       </div>
                                 
-                                      <div className="mt-4 pt-2 text-center">
+                                      {/* <div className="mt-4 pt-2 text-center">
                                         <button className="btn btn-info btn-lg" onClick={() => {props.editUser(id, user) ; props.viewPatient(false)}}>
                                           Edit Profile
                                         </button>
                                        
-                                      </div>
+                                      </div> */}
                                     </form>
                                   </div>
                                 </div>
@@ -138,22 +162,10 @@ function ViewPatientProfile(props) {
                     )
                 }
                
-            </>
-    );
+        </div>
+      )
+  }
+
 }
 
-export default ViewPatientProfile;
-
-
-
-
-{/* <ol key={id}>
-                                <li>{firstName}</li>
-                                <li>{lastName}</li>
-                                <li>{age}</li>
-                                <li>{weight}</li>
-                                <li>{height}</li>
-                                <li>{bloodValue}</li>
-                                <li>{genderValue}</li>
-                                <button onClick={() => {props.editUser(id, user) ; props.viewPatient(false)}}>Edit</button>
-                            </ol> */}
+export default ListingPatientProfile

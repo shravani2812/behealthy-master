@@ -69,7 +69,7 @@ function EditPatientProfile(props) {
                       <div className="col-md-6 ">
                         <div className="form-outline">
                           <input
-                            type="text"
+                          
                             id="firstName"
                             name="firstName"
                             className="form-control form-control-lg"
@@ -87,7 +87,7 @@ function EditPatientProfile(props) {
                       <div className="col-md-6 mb-4">
                         <div className="form-outline">
                           <input
-                            type="text"
+                           
                             id="lastName"
                             name="lastName"
                             className="form-control form-control-lg"
@@ -133,9 +133,9 @@ function EditPatientProfile(props) {
                             onChange={handleChange}
                           >
                             <option value="">Gender</option>
-                            <option value="Male">Male</option>
-                            <option value="Female">Female</option>
-                            <option value="Other">Other</option>
+                            <option value="MALE">Male</option>
+                            <option value="FEMALE">Female</option>
+                            <option value="OTHER">Other</option>
                           </select>
                           <p className="text-danger mt-2 float-start">
                             {formErrors.gender}
@@ -148,8 +148,8 @@ function EditPatientProfile(props) {
                             type="number"
                             id="contactNo"
                             className="form-control form-control-lg"
-                            name="contactNo"
-                            value={user.contactNo}
+                            name="contactNum"
+                            value={user.contactNum}
                             onChange={handleChange}
                           />
                           <label className="form-label float-start mx-2">
@@ -168,23 +168,23 @@ function EditPatientProfile(props) {
                           <select
                             className="form-select form-select-lg"
                             aria-label="Default select example"
-                            defaultValue={user.blood}
-                            name="blood"
+                            defaultValue={user.bloodGroup}
+                            name="bloodGroup"
                             onChange={handleChange}
                           >
                             <option value="">Select the Blood group</option>
-                            <option value="A+">A+</option>
-                            <option value="A-">A-</option>
-                            <option value="B+">B+</option>
-                            <option value="B-">B-</option>               
-                            <option value="AB+">AB+</option> 
-                            <option value="AB-">AB-</option> 
-                            <option value="O+">O+</option>
-                            <option value="O-">O-</option>
+                            <option value="APositive">A+</option>
+                            <option value="ANegative">A-</option>
+                            <option value="BPositive">B+</option>
+                            <option value="BNegative">B-</option>               
+                            <option value="ABPositive">AB+</option> 
+                            <option value="ABNegative">AB-</option> 
+                            <option value="OPositive">O+</option>
+                            <option value="ONegative">O-</option>
                             <option value="other">Other</option>
                           </select>
                           <p className="text-danger mt-4 float-start">
-                            {formErrors.blood}
+                            {formErrors.bloodGroup}
                           </p>
                         </div>
                       </div>

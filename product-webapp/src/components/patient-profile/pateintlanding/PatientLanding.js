@@ -18,23 +18,32 @@ import FooterCard from "../../userlanding/footer/FooterCard";
 import { Link } from "react-router-dom";
 import avatarlogo from './images/avatar.png';
 import applogo from '../../common/logo.jpg'
-
-
+import GetAllDoctorsAPI from "../../api-service/GetAllDoctorsAPI";
+import Loading from '../../common/Loading';
 function PatientLanding(props) {
 
-  const[docData,setDocData]=useState([]);
+  const[docData,setDocData]=useState();
+  const[showSearch,setSearch]=useState(true);
+
+ // const [alldoctors] = GetAllDoctorsAPI();
+  
+// useEffect(()=>{
+//   setDocData(alldoctors);
+//   console.log(alldoctors);
+// },[])
 
 
-
+ 
   useEffect(()=>{
     async function fetchdata(){
-      const doctorData=await axios.get('http://localhost:8001/doctorinfo');
-    //   doctorData.data.forEach((list) => {
-    //     console.log(list.firstName);
-    // })
+      const doctorData=await axios.get('http://localhost:8585/user/api/v1/doctor/getAllDoctor');
+      console.log(doctorData);
     setDocData(doctorData.data);
+    setSearch(false);
     }fetchdata()
   },[]);
+
+
 
 
   return (
@@ -83,15 +92,25 @@ function PatientLanding(props) {
         </Carousel>
       </section>
 
-      <div className="container mt-5 mb-5 me-5">
+      {/* <div className="container mt-5 mb-5 me-5">
         <div className="row">
-          <Searchbar placeholder="Search by Doctor, Specialist, location..." data={docData}/>
+        {showSearch ? (
+           <>loading...</>
+          ) : (
+            <Searchbar placeholder="Search by Doctor, Specialist, location..." data={docData}/>
+          )}
+         
         </div>
+      </div> */}
+      <div className="text-center mt-3">
+      <Link to="/patientpro/appointment"><button className="bn632-hover bn24 mx-3 ">Book Appoinment </button></Link>
       </div>
 
       <section>
+
         <div className="p-5 m-5">
           <h2 className="text-center">4 Easy Steps To Get Your Solutions</h2>
+        
         </div>
 
         <div className="container-fluid mt-5">

@@ -2,99 +2,91 @@ import React,{useState} from 'react';
 import { FcSearch } from "@react-icons/all-files/fc/FcSearch";
 import { AiFillCloseCircle } from "@react-icons/all-files/ai/AiFillCloseCircle";
 import { Link } from 'react-router-dom';
-function Searchbar({ placeholder, data }) {
-    const [filteredData, setFilteredData] = useState([]);
-    const [mailData, setFilterMail] = useState([]);
-    const [wordEntered, setWordEntered] = useState("");
-  console.log(data);
-    const handleFilter = (event) => {
-        const searchWord = event.target.value;
-        setWordEntered(searchWord);
-        const newFilter = data.filter((value) => {
-          return value.firstName.toLowerCase().includes(searchWord.toLowerCase());
-        });
 
-        const mailFilter = data.filter((value) => {
-          return value.mail.toLowerCase().includes(searchWord.toLowerCase());
-        });
-    
-        if (searchWord === "") {
-          setFilteredData([]);
-        } else {
-          setFilteredData(newFilter);
-        }
 
-        if (searchWord === "") {
-          setFilterMail([]);
-        } else {
-          setFilterMail(mailFilter);
-        }
-      };
-    
-      const clearInput = () => {
-        setFilteredData([]);
-        setFilterMail([]);
-        setWordEntered("");
-      };
+function SearchBar({ placeholder, data }) {
+  const [filteredData, setFilteredData] = useState([]);
+  const [filteredLocation, setFilteredLocation] = useState([]);
+  const [wordEntered, setWordEntered] = useState("");
 
-    return (
-        <>
-              <div className="col-xxl-8">
-            <div class="input-group">
-              <input
-                
-                type="text"
-                className='form-control'
+  const handleFilter = (event) => {
+    const searchWord = event.target.value;
+    setWordEntered(searchWord);
+    const newFilter = data.filter((value) => {
+      return value.specialization.toLowerCase().includes(searchWord.toLowerCase());
+    });
+
+    const locationFilter = data.filter((value) => {
+      return value.address.toLowerCase().includes(searchWord.toLowerCase());
+    });
+
+    if (searchWord === "") {
+      setFilteredData([]);
+      setFilteredLocation([])
+    } else {
+      setFilteredData(newFilter);
+      setFilteredLocation(locationFilter)
+    }
+  };
+
+  const clearInput = () => {
+    setFilteredData([]);
+    setFilteredLocation([]);
+    setWordEntered("");
+  };
+
+  return (
+    <div className="search">
+      <div className="searchInputs">
+        <input
+          type="text"
           placeholder={placeholder}
           value={wordEntered}
           onChange={handleFilter}
-              />
-              <button class="input-group-text" id="basic-addon2">
-              
-                {filteredData.length === 0 && mailData.length === 0 ? (
-              <FcSearch className="search-icons" />
+          className="form-controls"
+        />
+        <div className="searchIcon">
+          {filteredData.length === 0 ? (
+            <FcSearch />
           ) : (
             <AiFillCloseCircle id="clearBtn" onClick={clearInput} />
           )}
-              </button>
-            </div>
-            {filteredData.length !== 0 && (
-        <ul className="list-group me-5 mb-2">
-          {filteredData.slice(0, 15).map((value, key) => {
+        </div>
+      </div>
+      {filteredData.length != 0 && (
+         <div className="dataResult">
+            <h4>Specialist:</h4>
+         {filteredData.slice(0, 15).map((value, key) => {
+           return (
+             <a className="dataItem" href={value.link} target="_blank">
+                <p className='fs-6'>Name:Dr.{value.firstName},  Specialist:{value.specialization}, Location:{value.address}</p>
+             </a>
+           );
+         })}
+       </div>
+        
+      )}
+
+{filteredLocation.length != 0 && (
+        <div className="dataResult">
+          <h4>Location:</h4>
+          {filteredLocation.slice(0, 15).map((value, key) => {
             return (
-              <div className='text-dark'>
-                  First Name:
-             
-              <Link className="serachvalue" to='/doctor' >
-                <li className='list-group-item'>{value.firstName} </li>
-              </Link>
-              </div>
+              <a className="dataItem" href={value.link} target="_blank">
+              <p className='fs-6'>Name:Dr.{value.firstName},  Specialist:{value.specialization}, Location:{value.address}</p>
+              </a>
             );
           })}
-        </ul>
+        </div>
       )}
-       
-            {mailData.length !== 0 && (
-        <ul className="list-group me-5 mb-2">
-            <div className='text-dark'>
-              Email:
-          {mailData.slice(0, 15).map((value, key) => {
-           
-            return (
-            
-              <Link className="serachvalue" to='/doctor' >
-                 
-                <li className='list-group-item'>{value.mail} </li>
-              </Link>
-             
-            );
-          })}
-           </div>
-        </ul>
-      )}
-          </div>
-        </>
-    );
+
+      
+
+
+
+      
+    </div>
+  );
 }
 
-export default Searchbar;
+export default SearchBar;

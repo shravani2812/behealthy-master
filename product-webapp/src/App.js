@@ -19,7 +19,13 @@ import DoctorsList from './components/patient-profile/pages/DoctorsList';
 import BookSlot from './components/patient-profile/pages/BookSlot';
 import ViewSlot from './components/doctor-profile/Pages/ViewSlot';
 import CreatSlot from './components/doctor-profile/Pages/CreateSlot';
+
+import { UserContextProvider } from "./components/context/userContext";
+import Auth from './components/login/Auth';
+
+
 import DoctorAppointments from './components/doctor-profile/Pages/doctorAppointments';
+
 
 
 function App() {
@@ -32,7 +38,9 @@ function App() {
      {/* <Main/>    */}
       {/* <HomePage/> */}
      {/* <PatientLanding/> */}
+    
      <BrowserRouter>
+     <UserContextProvider>
       <Routes>
          <Route path="/" element={<UserHome />} /> 
         <Route path="/patient" element={<PatientLanding />} />
@@ -58,7 +66,9 @@ function App() {
       <Route path='/register' element={<Register/>}></Route>
 
       </Routes>
+      </UserContextProvider>
     </BrowserRouter>
+  
     </>
     
   );

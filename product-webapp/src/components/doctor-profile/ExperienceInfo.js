@@ -5,10 +5,12 @@ import { Input,InputNumber} from "formik-antd";
 import MultiformContext from "./Multiformcontext";
 
 const ExperienceInfo = () => {
-    const { experience, setExperience, next, prev } = useContext(MultiformContext);
+    const { experience, setExperience, next, prev,profileDetails } = useContext(MultiformContext);
     return (
-      <Formik
-        initialValues={experience}
+      <Formik 
+      enableReinitialize={true}
+      initialValues={profileDetails }
+        
         onSubmit={(values) => {
             setExperience(values);
           next();
@@ -18,8 +20,8 @@ const ExperienceInfo = () => {
           if (!values.graduation) errors.graduation = "Graduation is required";
           if (!values.specialization) errors.specialization = "Specialization is required";
           if(!(/^\+?([0-9]{2})\)?[-. ]?([0-9]{5})[-. ]?([0-9]{5})$/.test(values.mrn)))  errors.mrn = "Provide valid 12 number"
-          if (!values.registrationYr) errors.registrationYr = "Year of Registration is required";
-          if (!(values.registrationYr>1950 && values.registrationYr<2021)) errors.registrationYr = "Provide valid registration year";
+          if (!values.yearOfRegistration) errors.yearOfRegistration = "Year of Registration is required";
+          if (!(values.yearOfRegistration>1950 && values.yearOfRegistration<2021)) errors.registrationYr = "Provide valid registration year";
           return errors;
         }}
       >
@@ -38,7 +40,7 @@ const ExperienceInfo = () => {
              <div className="col-md-6">
                <div className={`form__item ${errors.graduation && "input__error"}`}>
                  <label>Graduation</label>
-                 <Input name={"graduation"}  className="form-control"/>
+                 <Input name={"graduation"} className="form-control"/>
                  <p className={"error__feedback"}>{errors.graduation}</p>
                </div>
              </div>
@@ -54,16 +56,16 @@ const ExperienceInfo = () => {
              <div className="col-md-6">
                <div className={`form__item ${errors.mrn && "input__error"}`}>
                  <label>MRN</label>
-                 <InputNumber name={"mrn"}  className="form-control"/>
+                 <Input name={"mrn"}  className="form-control"/>
                  <p className={"error__feedback"}>{errors.mrn}</p>
                </div>
              </div>
              <div className="col-md-6">
-               <div className={`form__item ${errors.registrationYr && "input__error"}`}>
+               <div className={`form__item ${errors.yearOfRegistration && "input__error"}`}>
                <label>Year of Registartion</label>
-               <Input name={"registrationYr"}  className="form-control"/>
+               <Input name={"yearOfRegistration"}  className="form-control"/>
                         
-                 <p className={"error__feedback"}>{errors.registrationYr}</p>
+                 <p className={"error__feedback"}>{errors.yearOfRegistration}</p>
                </div>
                <div
              className={"form__item button__items d-flex justify-content-end"}

@@ -14,6 +14,7 @@ import { Link, useNavigate } from 'react-router-dom';
 function DoctorsList(props) {
 
     const navigate = useNavigate();
+    const [wordEntered, setWordEntered] = useState("");
 
     const bookSlot = (data) => {
         navigate('/patientpro/bookslot', 
@@ -96,22 +97,21 @@ function DoctorsList(props) {
             });
     }
 
-    // console.log(Object.keys(selectedData).length)
-    // console.log(JSON.stringify(selectedData))
 
+  
     return (
         <>
             <div>
                 <Container fluid>
 
-                    <InputGroup className="my-3">
+                    {/* <InputGroup className="my-3">
                         <InputGroup.Text id="basic-addon1"><i className="fas fa-search"></i></InputGroup.Text>
                         <Form.Control
                             placeholder="Search by Doctors"
                             aria-label="Username"
-                            aria-describedby="basic-addon1"
+                            aria-describedby="basic-addon1" 
                         />
-                    </InputGroup>
+                    </InputGroup> */}
                     <div style={{ "display": "flex", "flexDirection": "row", "justifyContent": "space-between" }}>
                         <div style={{ "marginRight": "40px" }}>
 

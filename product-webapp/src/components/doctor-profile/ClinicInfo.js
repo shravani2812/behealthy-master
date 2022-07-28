@@ -5,13 +5,14 @@ import { Input,InputNumber} from "formik-antd";
 import MultiformContext from "./Multiformcontext";
 
 const ClinicInfo = () => {
-    const { clinic, setClinic, next, prev } = useContext(MultiformContext);
+    const { clinic, setClinic, next, prev,profileDetails } = useContext(MultiformContext);
 
 
 
     return (
       <Formik
-        initialValues={clinic}
+      enableReinitialize={true}
+      initialValues={profileDetails }
         onSubmit={(values) => {
           setClinic(values);
           
@@ -20,9 +21,9 @@ const ClinicInfo = () => {
         }}
         validate={(values) => {
           const errors = {};
-          if (!values.experience) errors.experience = "Experience is required";
-          if (!(values.experience<50 && values.experience>0)) errors.experience = "Provide valid experience";
-          if (!values.location) errors.location = "Location is required";
+          if (!values.yoe) errors.yoe = "Experience is required";
+          if (!(values.yoe<50 && values.yoe>0)) errors.yoe = "Provide valid experience";
+          if (!values.hospitalLocation) errors.hospitalLocation = "Location is required";
           if (!(/^[a-zA-Z](\s?[a-zA-Z]){2,16}$/).test(values.location)) errors.location="Provide valid location";   
           if (!values.hospitalName) errors.hospitalName = "Hospital name is required";
           if (!(/^[a-zA-Z](\s?[a-zA-Z]){2,16}$/).test(values.hospitalName)) errors.hospitalName="Provide valid Hospital/clinic name";   
@@ -42,17 +43,17 @@ const ClinicInfo = () => {
                 <h3>Clinic Details:</h3>
                 <div className="row">
              <div className="col-md-6">
-               <div className={`form__item ${errors.experience && "input__error"}`}>
+               <div className={`form__item ${errors.yoe && "input__error"}`}>
                  <label>Experience</label>
-                 <Input name={"experience"}  className="form-control"/>
-                 <p className={"error__feedback"}>{errors.experience}</p>
+                 <Input name={"yoe"}  className="form-control"/>
+                 <p className={"error__feedback"}>{errors.yoe}</p>
                </div>
              </div>
              <div className="col-md-6">
-               <div className={`form__item ${errors.location && "input__error"}`}>
+               <div className={`form__item ${errors.hospitalLocation && "input__error"}`}>
                  <label>Hospital/Clinic Location</label>
-                 <Input name={"location"}  className="form-control"/>
-                 <p className={"error__feedback"}>{errors.location}</p>
+                 <Input name={"hospitalLocation"}  className="form-control"/>
+                 <p className={"error__feedback"}>{errors.hospitalLocation}</p>
                </div>
              </div>
            </div>

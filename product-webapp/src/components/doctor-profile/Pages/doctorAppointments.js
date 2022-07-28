@@ -7,17 +7,19 @@ import Col from 'react-bootstrap/esm/Col';
 import {useEffect, useState} from 'react';
 import { Button } from 'react-bootstrap';
 import axios from 'axios';
+import { useUserContext } from '../../context/userContext';
+
 
 function DoctorAppointments(){
     const [appointments, setappointments] = useState([]);
-    
+    const { user, logOut } = useUserContext();
     const [type, setType] = useState("all");
     const getAll = async () => {
         // const response = await fetch(`http://localhost:8585/appointment/api/v1/getAppointmentsByPatientEmail/doctor1@gmail.com`);
         // setappointments(await response.json());
         axios({
             method : 'get',
-            url : `http://localhost:8585/appointment/api/v1/getAppointmentsByDoctorEmail/doctor1@gmail.com`,
+            url : `http://localhost:8585/appointment/api/v1/getAppointmentsByDoctorEmail/${user.name}`,
             headers: {
                 'Content-Type': 'application/json',
                 'Accept': 'application/json'
@@ -57,8 +59,17 @@ function DoctorAppointments(){
             console.log(response);
         });
         alert("Record Delete successfully ...!")
-        window.location.reload(); 
+       //window.location.reload(); 
     }
+
+    // useEffect(()=>{
+    //     appointmentList();
+    // })
+
+    // const appointmentList=()=>{
+    //     let response=axios.get(`http://localhost:8585/appointment/api/v1/getAppointmentsByPatientEmail/${user.name}`);
+    //     console.log(response.data.status);
+    // }
 
     return(
             <div className='me-5'>

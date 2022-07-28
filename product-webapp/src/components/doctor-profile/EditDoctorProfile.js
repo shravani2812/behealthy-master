@@ -1,73 +1,31 @@
+import React, { useState } from 'react';
 import { BackTop, Button, Col, Row } from "antd";
-import React, { useContext, useEffect, useState } from "react";
 import MultiformContext from "./Multiformcontext";
 import axios from 'axios';
 import { Formik } from "formik";
 import Container from 'react-bootstrap/Container';
 import { useUserContext } from "../context/userContext";
-import { Select } from "antd";
 import { Input } from "formik-antd";
-const ListDoctorInfo = () => {
-  const { personal, experience, clinic, prev,next,profileDetails,userPhoto } = useContext(MultiformContext);
-  const[formValues,setUpdateValue]=useState({});
-  const[loading,setLoading]=useState(false);
-  const { user, logOut } = useUserContext();
-  const { Option } = Select;
-  
-  useEffect(()=>{
-    console.log(profileDetails);
-    debugger;
-    const url=`http://localhost:8585/user/api/v1/doctor/update/doctorEmail/${user.name}`;
-    let doctorDetails={
-      
-        
-        firstName: personal.firstName,
-        lastName: personal.lastName,
-        age: personal.age,
-        address:personal.address,
-        contactNo:personal.contactNo,
-        gender:personal.gender,
-        graduation: experience.graduation,
-        specialization: experience.specialization,
-        mrn: experience.mrn,
-        yearOfRegistration:experience.yearOfRegistration,
-        yoe: clinic.yoe,
-        hospitalLocation: clinic.hospitalLocation,
-        hospitalName: clinic.hospitalName,
-        doctorEmail:profileDetails.doctorEmail,
-        doctorPassword:profileDetails.doctorPassword,
-        userRole:profileDetails.userRole,
-        doctorImage:userPhoto
-      
-    }
-    axios.put(url,doctorDetails
-     ).then((res)=>{
-        console.log(res);
-        setUpdateValue(res.data);
-        
-      });
-  
-  },[])
+import { Select } from "antd";
 
-  let handleEdit=()=>{
-    setLoading(true);
-    console.log(formValues);
-  }
-
-  if(loading){
+function EditDoctorProfile(props) {
+    const[formValues,setUpdateValue]=useState({});
+    const { user, logOut } = useUserContext();
+    const { Option } = Select;
     return (
-      <Formik
+        <div>
+                  <Formik
       enableReinitialize={true}
         initialValues={formValues }
         onSubmit={(values) => {
          console.log(values);
-         debugger;
+
          const url=`http://localhost:8585/user/api/v1/doctor/update/doctorEmail/${user.name}`;
          axios.put(url,values
           ).then((res)=>{
              console.log(res);
              setUpdateValue(res.data);
-            setLoading(false);
+            
            });
          
         }}
@@ -80,7 +38,7 @@ const ListDoctorInfo = () => {
           if (!(/^[a-zA-Z](\s?[a-zA-Z]){2,16}$/).test(values.lastName)) errors.lastName="Provide valid first name"
           if (!values.address) errors.address = "Address is required";
           if (!values.age) errors.age = "Age is required";
-          if (!values.gender) errors.gender = "Gender is required";
+         // if (!values.gender) errors.gender = "Gender is required";
           if(!(values.age<100 && values.age>18)) errors.age="provide valid age";
           if (!values.contactNo) errors.contactNo = "Contact Number is required";
           if(!(/^\+?([0-9]{2})\)?[-. ]?([0-9]{4})[-. ]?([0-9]{4})$/.test(values.contactNo)))  errors.contactNo = "Provide valid mininum 10 number";
@@ -143,16 +101,16 @@ const ListDoctorInfo = () => {
               <div className="row">
                 <div className="col-md-3">
                   <div className={`form__item ${errors.gender && "input__error"}`}>
-                    <label>Gender</label>
-                    <Select defaultValue="MALE"
+                    <label>Ge</label>
+                    <Select
             name={"gender"}
            
             style={{ width: 120 }}
           
         >
           <Option value="MALE">Male</Option>
-          <Option value="FEMALE">Female</Option>
-        </Select>      
+          <Option value="FEMALe">Female</Option>
+        </Select>       
                     <p className={"error__feedback"}>{errors.gender}</p>
                   </div>
                 </div>
@@ -250,80 +208,8 @@ const ListDoctorInfo = () => {
           );
         }}
       </Formik>
+        </div>
     );
+}
 
-  }else
-  
-  return (
-    <Formik
-    enableReinitialize={true}
-    initialValues={profileDetails }
-      onSubmit={() => {
-      
-        next();
-      }}
-    
-      validate={(values) => {
-        const errors = {};
-        if (!values.firstName) errors.firstName = "First Name is required";
-        if (!(/^[a-zA-Z](\s?[a-zA-Z]){2,16}$/).test(values.firstName)) errors.firstName="Provide valid first name"   
-        if (!values.lastName) errors.lastName = "Last Name is required";
-        if (!(/^[a-zA-Z](\s?[a-zA-Z]){2,16}$/).test(values.lastName)) errors.lastName="Provide valid first name"
-        if (!values.address) errors.address = "Address is required";
-        if (!values.age) errors.age = "Age is required";
-        if (!values.gender) errors.gender = "Gender is required";
-        if(!(values.age<100 && values.age>18)) errors.age="provide valid age";
-        if (!values.contactNo) errors.contactNo = "Contact Number is required";
-        if(!(/^\+?([0-9]{2})\)?[-. ]?([0-9]{4})[-. ]?([0-9]{4})$/.test(values.contactNo)))  errors.contactNo = "Provide valid mininum 10 number"
-        if ((/^[0-9]+$/).test(values.profession))
-          errors.profession =
-            "Profession does not require numbers or special characters";
-        return errors;
-      }}
-    >
-      {({ handleSubmit, errors }) => {
-        return (
-         
-          <div className="mt-5">
-     
-      <Container fluid className="">
-      <h1 className="mb-5">Profile Details:</h1>
-        <Row>
-          <Col xl={6} xs={12}> <p className="fs-4 fw-semibold">First Name:<span className="fw-light"> {formValues.firstName}</span></p></Col>
-          <Col xl={6} xs={12}> <p className="fs-4 fw-semibold">Last Name:<span className="fw-light"> {formValues.lastName}</span></p></Col>
-          <Col xl={6} xs={12}> <p className="fs-4 fw-semibold">Address:<span className="fw-light"> {formValues.address}</span></p></Col>
-          <Col xl={3} xs={12}> <p className="fs-4 fw-semibold">Age:<span className="fw-light"> {formValues.age}</span></p></Col>
-          <Col xl={3} xs={12}> <p className="fs-4 fw-semibold">Gender:<span className="fw-light"> {formValues.gender}</span></p></Col>
-        </Row>
-        <Row className="mt-5">
-          <Col xl={6} xs={12}> <p className="fs-4 fw-semibold">Contact No:<span className="fw-light"> {formValues.contactNo}</span></p></Col>
-          <Col xl={6} xs={12}> <p className="fs-4 fw-semibold">Graduation:<span className="fw-light"> {formValues.graduation}</span></p></Col>
-          <Col xl={6} xs={12}> <p className="fs-4 fw-semibold">Specialization:<span className="fw-light"> {formValues.specialization}</span></p></Col>
-          <Col xl={6} xs={12}> <p className="fs-4 fw-semibold">MRN:<span className="fw-light"> {formValues.mrn}</span></p></Col>
-        </Row>
-        <Row className="mt-5">
-          <Col xl={6} xs={12}> <p className="fs-4 fw-semibold">Registration Year:<span className="fw-light"> {formValues.yearOfRegistration}</span></p></Col>
-          <Col xl={6} xs={12}> <p className="fs-4 fw-semibold">Experience:<span className="fw-light"> {formValues.yoe} years</span></p></Col>
-          <Col xl={6} xs={12}> <p className="fs-4 fw-semibold">Clinic location:<span className="fw-light"> {formValues.hospitalLocation}</span></p></Col>
-          <Col xl={6} xs={12}> <p className="fs-4 fw-semibold">Clinic Name:<span className="fw-light"> {formValues.hospitalName}</span></p></Col>
-        </Row>
-        <Row className="mt-3">
-          <Col> </Col>      
-        </Row>
-        <Button type={"primary"} onClick={handleEdit}>
-                Edit
-        </Button>
-      </Container>
-
-    </div>
-    
-            
-          
-      
-         
-        );
-      }}
-    </Formik>
-  );
-};
-export default ListDoctorInfo;
+export default EditDoctorProfile;

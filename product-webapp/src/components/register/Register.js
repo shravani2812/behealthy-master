@@ -5,27 +5,89 @@ import logo from "../login/Logo.png";
 import bgdoc from "../login/bg-doctor.jpg";
 import { Link } from "react-router-dom";
 import Navbars from "../common/Navbars";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 function Register(props) {
-  const initialValues = { email: "", password: "" };
+  const initialValues = { email: "", password: "",confirmpassword:"", role:"doctor" };
   const [formValues, setFormValues] = useState(initialValues);
   const [formErrors, setFormErrors] = useState({});
   const [isSubmit, setIsSubmit] = useState(false);
+  const navigate = useNavigate();
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormValues({ ...formValues, [name]: value });
+   
     //console.log(formValues)
-    console.log(e.target.value);
+    
+  };
+
+
+
+  const config = {
+   
+    headers: {
+      accept: 'application/json',
+      method:'post'
+    },
+    
+  };
+  const registerUser =  (formValues) => {
+    let doctor=
+      {
+        doctorEmail: formValues.email,
+        doctorPassword: formValues.password,
+        userRole: formValues.role.toUpperCase()
+       
+       
+      }
+
+      let patient=
+      {
+        patientEmail: formValues.email,
+        patientPassword: formValues.password,
+        userRole: formValues.role.toUpperCase()
+       
+       
+      }
+   debugger;
+      if(doctor.userRole==='DOCTOR'){
+        
+        axios.post('http://localhost:8585/user/api/v1/doctor',doctor
+        ).then((response)=>{
+          
+          
+           console.log("Data: ", response.data);
+           navigate('/login')
+          
+         }).then((err)=>{
+           console.log(err);
+         });
+      }else{
+        axios.post('http://localhost:8585/user/api/v1/patient',patient
+        ).then((response)=>{
+          
+          
+           console.log("Data: ", response.data);
+           navigate('/login')
+          
+         }).then((err)=>{
+           console.log(err);
+         });
+      }
+  
+   
   };
   
   const handleSubmit = (e) => {
     e.preventDefault();
     setFormErrors(validate(formValues));
+    registerUser(formValues);
     setIsSubmit(true);
   };
   useEffect(() => {
-    console.log(formErrors);
+   
     if (Object.keys(formErrors).length === 0 && isSubmit) {
-      console.log(formErrors);
+     
     }
   }, [formErrors]);
   const validate = (values) => {
@@ -41,7 +103,7 @@ function Register(props) {
     }
     if (!values.confirmpassword) {
       errors.confirmpassword = "Please confirm your password";
-    } else if (values.password != values.confirmpassword) {
+    } else if (values.password !== values.confirmpassword) {
       errors.confirmpassword = "Password should match";
     }
     return errors;
@@ -106,15 +168,18 @@ function Register(props) {
                     <p style={{ color: "red" }}>{formErrors.confirmpassword}</p>
                   </div>
 
-                  <div class="mb-3 form-check mt-3">
-                    <input
-                      type="checkbox"
-                      class="form-check-input ms-5 me-2"
-                      id="exampleCheck1"
-                    />
-                    <label class="form-check-label ms-3" for="exampleCheck1">
-                      {" "}
-                      Are you a Doctor?
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="role" id="exampleRadios1" value="doctor" checked={formValues.role === 'doctor'}
+          onChange={handleChange}/>
+                    <label class="form-check-label" for="exampleRadios1">
+                    Doctor
+                    </label>
+                  </div>
+                  <div class="form-check">
+                  <input class="form-check-input" type="radio" name="role" id="exampleRadios1" value="patient" checked={formValues.role === 'patient'}
+          onChange={handleChange}/>
+                    <label class="form-check-label" for="exampleRadios2">
+                     Pateint
                     </label>
                   </div>
 
