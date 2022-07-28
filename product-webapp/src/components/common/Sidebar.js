@@ -44,11 +44,11 @@ class SideNavBar extends React.Component {
               <p>View your profile</p>
               </div>
               </Nav.Link>
-              <Nav.Link eventKey="link-2" as={Link} to="/bookappointment">
+              <Nav.Link eventKey="link-2" as={Link} to="viewappointment">
               <div style={{"display":"flex","flexDirection":"row"}}>
               <i className="fas fa-info-circle"></i>
               {/* <i class="fas fa-search"></i> */}
-              <p>Book Appointment</p>
+              <p>View Appointments</p>
               </div>
               </Nav.Link>
               </Nav>

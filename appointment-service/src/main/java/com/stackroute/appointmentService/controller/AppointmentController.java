@@ -2,6 +2,7 @@ package com.stackroute.appointmentService.controller;
 
 import com.stackroute.appointmentService.model.Appointment;
 import com.stackroute.appointmentService.model.Status;
+import com.stackroute.appointmentService.model.Timeslot;
 import com.stackroute.appointmentService.service.AppointmentService;
 import com.stackroute.appointmentService.service.AppointmentSequenceGeneratorService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -68,6 +69,10 @@ public class AppointmentController {
          appointmentService.deleteByAppointmentId(appointmentId);
         return new ResponseEntity<String>("Appointment deleted successfully..!!", HttpStatus.OK);
     }
+
+
+
+
 
 
 }

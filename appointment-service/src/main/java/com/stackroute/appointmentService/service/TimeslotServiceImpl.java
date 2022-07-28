@@ -49,6 +49,25 @@ public class TimeslotServiceImpl implements TimeslotService {
 
     }
 
+    @Override
+    public List<Timeslot> findAllTimeslots() {
+        List<Timeslot> list = timeslotRepository.findAll();
+        return list;
+    }
 
+    @Override
+    public Timeslot updateTimeslot(int slotId,Timeslot timeslot) {
+        Optional<Timeslot> slot = timeslotRepository.findById(slotId);
+        Timeslot slot1 = slot.get();
+        slot1.setAppointmentStartTime(timeslot.getAppointmentStartTime());
+        slot1.setAppointmentEndTime(timeslot.getAppointmentEndTime());
+        return  timeslotRepository.save(slot1);
+
+    }
+
+    @Override
+    public void deleteTimeslot(int slotId) {
+        timeslotRepository.deleteById(slotId);
+    }
 
 }

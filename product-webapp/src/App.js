@@ -19,7 +19,7 @@ import DoctorsList from './components/patient-profile/pages/DoctorsList';
 import BookSlot from './components/patient-profile/pages/BookSlot';
 import ViewSlot from './components/doctor-profile/Pages/ViewSlot';
 import CreatSlot from './components/doctor-profile/Pages/CreateSlot';
-
+import DoctorAppointments from './components/doctor-profile/Pages/doctorAppointments';
 
 
 function App() {
@@ -40,6 +40,7 @@ function App() {
            <Route path="profile" element={<Main/>}/>
            <Route path="viewslot" element={<ViewSlot/>}/>
            <Route path="createslot" element={<CreatSlot/>}/>
+           <Route path="viewappointment" element={<DoctorAppointments/>}/>
         </Route>
        
        
