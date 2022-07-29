@@ -57,7 +57,7 @@ const BookSlot = () => {
     const getAllData = () => {
         axios({
             method: 'get',
-            url: `https://behealthy.stackroute.io/user/api/v1/doctor/doctorEmail/${location.state.email}`,
+            url: `http://localhost:8585/user/api/v1/doctor/doctorEmail/${location.state.email}`,
             headers: {
                 'Content-Type': 'application/json',
                 'Accept': 'application/json'
@@ -80,8 +80,8 @@ const BookSlot = () => {
 
         axios({
             method: 'get',
-            url: `https://behealthy.stackroute.io/appointment/api/v1/slotByDate/${jsonData.slotDate}/${jsonData.doctorEmail}`,
-            // url: `https://behealthy.stackroute.io/appointment/api/v1/slotByDate/2022-07-24/vedant@gmail.com`,
+            url: `http://localhost:8585/appointment/api/v1/slotByDate/${jsonData.slotDate}/${jsonData.doctorEmail}`,
+            // url: `http://localhost:8585/appointment/api/v1/slotByDate/2022-07-24/vedant@gmail.com`,
             // url: `localhost:8585/appointment/api/v1/getAllSlots`,
             headers: {
                 'Content-Type': 'application/json',
@@ -114,6 +114,7 @@ const BookSlot = () => {
     }
     const bookAppointment = () => {
         // localhost:8585/appointment/api/v1/saveAppointment
+        console.log(selectedSlot)
 
         const jsonBookData = {
             doctorEmail: location.state.email,
@@ -124,7 +125,7 @@ const BookSlot = () => {
             patientEmail: user.name,
             patientDescription: description
         }
-        axios.post('https://behealthy.stackroute.io/appointment/api/v1/saveAppointment', jsonBookData
+        axios.post('http://localhost:8585/appointment/api/v1/saveAppointment', jsonBookData
         ).then((response) => {
             console.log("Data: ", response.data);
             alert("Your appointment has been booked Successfully ...!");
@@ -133,7 +134,7 @@ const BookSlot = () => {
         });
 
         console.log(selectedSlot.slotId, selectedSlot.slotAvailability)
-        axios.patch(`https://behealthy.stackroute.io/appointment/api/v1/updateSlotAvailability/${selectedSlot.slotId}`,
+        axios.patch(`http://localhost:8585/appointment/api/v1/updateSlotAvailability/${selectedSlot.slotId}`,
             selectedSlot.slotAvailability = false
         ).then((response) => {
             console.log(response.data);

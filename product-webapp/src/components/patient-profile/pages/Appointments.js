@@ -18,7 +18,7 @@ function Appointments(){
     const [type, setType] = useState("all");
     const { user, logOut } = useUserContext();
     const getAll = async () => {
-        const response = await fetch(`https://behealthy.stackroute.io/appointment/api/v1/getAppointmentsByPatientEmail/${user.name}`);
+        const response = await fetch(`http://localhost:8585/appointment/api/v1/getAppointmentsByPatientEmail/${user.name}`);
         setappointments(await response.json());
         
     }
@@ -49,7 +49,7 @@ function Appointments(){
     }
 
     const deleteAppointment = (data) => {
-        axios.delete(`https://behealthy.stackroute.io/appointment/api/v1/deleteAppointmentsByAppointmentId/${data.appointmentId}`).then(response => {
+        axios.delete(`http://localhost:8585/appointment/api/v1/deleteAppointmentsByAppointmentId/${data.appointmentId}`).then(response => {
             console.log(response);
         });
         alert("Record Delete successfully ...!")

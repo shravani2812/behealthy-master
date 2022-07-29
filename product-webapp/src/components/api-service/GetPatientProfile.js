@@ -10,7 +10,7 @@ const GetPatientProfileAPI = () => {
   
     useEffect(() => {
       async function fetchPatientDetails() {
-        const fullResponse = await fetch(`https://behealthy.stackroute.io/user/api/v1/patient/patientEmail/julie@gmail.com`);
+        const fullResponse = await fetch(`http://localhost:8585/user/api/v1/patient/patientEmail/julie@gmail.com`);
         const responseJson = await fullResponse.json();
         console.log(responseJson);
         usersSet(responseJson);

@@ -24,7 +24,7 @@ function Profile(props) {
   useEffect(()=>{
  
     async function doGetProfile() {
-        let res = await axios.get(`https://behealthy.stackroute.io/user/api/v1/patient/patientEmail/julie@gmail.com`);
+        let res = await axios.get(`http://localhost:8585/user/api/v1/patient/patientEmail/julie@gmail.com`);
         setPatient(res.data);
         console.log(res.data);
        
@@ -35,7 +35,7 @@ function Profile(props) {
 
     const addPateint = (userProfile) => {
       
-      const url=`https://behealthy.stackroute.io/user/api/v1/update/patientEmail/julie@gmail.com`;
+      const url=`http://localhost:8585/user/api/v1/update/patientEmail/julie@gmail.com`;
     
       console.log(profileDetails+" "+profileDetails.patientPassword+" "+profileDetails.userRole);
       let addProfile={
@@ -89,7 +89,7 @@ function Profile(props) {
   const updateUser = (newUser) => {
     console.log("New user"+ newUser);
           
-    axios.put(`https://behealthy.stackroute.io/user/api/v1/update/patientEmail/julie@gmail.com`, newUser)
+    axios.put(`http://localhost:8585/user/api/v1/update/patientEmail/julie@gmail.com`, newUser)
     .then(response => {
       
         console.log("Data: ", response.data);

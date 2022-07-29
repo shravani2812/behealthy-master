@@ -36,7 +36,7 @@ function PatientLanding(props) {
  
   useEffect(()=>{
     async function fetchdata(){
-      const doctorData=await axios.get('https://behealthy.stackroute.io/user/api/v1/doctor/getAllDoctor');
+      const doctorData=await axios.get('http://localhost:8585/user/api/v1/doctor/getAllDoctor');
       console.log(doctorData);
     setDocData(doctorData.data);
     setSearch(false);

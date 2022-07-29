@@ -15,11 +15,11 @@ function DoctorAppointments(){
     const { user, logOut } = useUserContext();
     const [type, setType] = useState("all");
     const getAll = async () => {
-        // const response = await fetch(`https://behealthy.stackroute.io/appointment/api/v1/getAppointmentsByPatientEmail/doctor1@gmail.com`);
+        // const response = await fetch(`http://localhost:8585/appointment/api/v1/getAppointmentsByPatientEmail/doctor1@gmail.com`);
         // setappointments(await response.json());
         axios({
             method : 'get',
-            url : `https://behealthy.stackroute.io/appointment/api/v1/getAppointmentsByDoctorEmail/${user.name}`,
+            url : `http://localhost:8585/appointment/api/v1/getAppointmentsByDoctorEmail/${user.name}`,
             headers: {
                 'Content-Type': 'application/json',
                 'Accept': 'application/json'
@@ -55,7 +55,7 @@ function DoctorAppointments(){
     console.log(appointments)
 
     const deleteAppointment = (data) => {
-        axios.delete(`https://behealthy.stackroute.io/appointment/api/v1/deleteAppointmentsByAppointmentId/${data.appointmentId}`).then(response => {
+        axios.delete(`http://localhost:8585/appointment/api/v1/deleteAppointmentsByAppointmentId/${data.appointmentId}`).then(response => {
             console.log(response);
         });
         alert("Record Delete successfully ...!")
@@ -67,7 +67,7 @@ function DoctorAppointments(){
     // })
 
     // const appointmentList=()=>{
-    //     let response=axios.get(`https://behealthy.stackroute.io/appointment/api/v1/getAppointmentsByPatientEmail/${user.name}`);
+    //     let response=axios.get(`http://localhost:8585/appointment/api/v1/getAppointmentsByPatientEmail/${user.name}`);
     //     console.log(response.data.status);
     // }
 

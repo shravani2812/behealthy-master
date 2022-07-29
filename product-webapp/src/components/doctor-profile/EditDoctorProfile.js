@@ -20,7 +20,7 @@ function EditDoctorProfile(props) {
         onSubmit={(values) => {
          console.log(values);
 
-         const url=`https://behealthy.stackroute.io/user/api/v1/doctor/update/doctorEmail/${user.name}`;
+         const url=`http://localhost:8585/user/api/v1/doctor/update/doctorEmail/${user.name}`;
          axios.put(url,values
           ).then((res)=>{
              console.log(res);
